@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="SociaLab"
+        android:textColor="#ffffff"
+        android:background="#335373"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/emailLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:layout_margin="15dp"
+        android:background="#335373"
+        android:textColor="#ffffff"
+        android:shadowColor="#ffffff"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:background="#335373"
+        android:textColor="#ffffff"
+        android:layout_margin="15dp"
+        android:shadowColor="#ffffff"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acceder"
+        android:layout_margin="16dp"
+        android:backgroundTint="#335373"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#335373"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:shadowRadius="20"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="¿Olvidaste tu contraseña?"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#335373"
+        android:text="Volver"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:textStyle="italic"/>
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo1"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="SociaLab"
+        android:textColor="#ffffff"
+        android:background="#335373"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:backgroundTint="#335373"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/registroButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:backgroundTint="#335373"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"/>
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="SociaLab"
+        android:textColor="#ffffff"
+        android:background="#335373"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
+
+
+    <EditText
+        android:id="@+id/emailLoginRecuperar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:layout_margin="15dp"
+        android:background="#335373"
+        android:textColor="#ffffff"
+        android:shadowColor="#ffffff"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/recuperarPassButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recuperar"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:backgroundTint="#335373"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/backButtonOlvidarPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:textSize="25sp"
+        android:textColor="#ffffff"
+        android:textStyle="italic"
+        android:backgroundTint="#335373"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:padding="16dp"/>
+</LinearLayout>
