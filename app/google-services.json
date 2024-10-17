@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "433201348262",
+    "project_id": "vanner-proyect-5816a",
+    "storage_bucket": "vanner-proyect-5816a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433201348262:android:4893b821d438ce48d97e67",
+        "android_client_info": {
+          "package_name": "com.example.socialab2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClsS_50Sz1koGUfCLPhbIiclWUfG7y294"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

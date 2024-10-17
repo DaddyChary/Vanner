@@ -1,0 +1,223 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/fondo1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/perfilusuario"
+                android:layout_marginEnd="16dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/btn_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar"
+                    android:textColor="#ffffff"
+                    android:backgroundTint="#335373" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar"
+                    android:textColor="#ffffff"
+                    android:backgroundTint="#335373"
+                    android:layout_marginTop="8dp" />
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salir de Perfil"
+                    android:textColor="#ffffff"
+                    android:backgroundTint="#335373"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datos del perfil"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:textColor="#ffffff"
+            android:background="#335373" />
+
+        <EditText
+            android:id="@+id/et_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellido"
+            android:textColor="#ffffff"
+            android:background="#335373" />
+
+        <EditText
+            android:id="@+id/et_Rut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rut"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+        <EditText
+            android:id="@+id/et_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dirección"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tv_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Calle"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/et_numeroCasa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Numero de casa o departamento"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/et_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Comuna"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/et_region"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Región"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+
+        <EditText
+            android:id="@+id/et_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/et_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrenadores"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrenadores"
+                android:textColor="#ffffff"
+                android:background="#335373"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Técnicos"
+                android:textColor="#ffffff"
+                android:background="#335373"
+                android:layout_marginEnd="16dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empresas"
+                android:textColor="#ffffff"
+                android:background="#335373" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Especialización"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:padding="20dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:textColor="#ffffff"
+            android:backgroundTint="#335373" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:textColor="#ffffff"
+            android:backgroundTint="#335373"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
