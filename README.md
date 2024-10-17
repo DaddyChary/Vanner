@@ -49,7 +49,11 @@ La aplicación se desarrollará siguiendo un modelo cliente-servidor. El backend
 - Recibe un correo con un enlace para restablecer su contraseña.
 
 # 7. Seguridad
-Se implementarán medidas de seguridad como el cifrado de contraseñas mediante algoritmos de hash, y el uso de JWT para la autenticación de usuarios, garantizando que la información personal y las comunicaciones entre usuarios estén protegidas.
+La seguridad es una prioridad en esta aplicación. Se implementarán las siguientes medidas:
+
+- Cifrado de Contraseñas: Firebase Authentication se encarga del almacenamiento y gestión segura de las contraseñas, aplicando automáticamente técnicas de hashing para garantizar que las contraseñas no se almacenen en texto plano.
+- Autenticación Segura: Firebase Authentication proporciona un sistema robusto de autenticación, protegiendo la identidad de los usuarios y sus datos personales mediante un sistema de tokens seguros.
+- Protección de la Información: Las comunicaciones entre usuarios están protegidas utilizando conexiones seguras (SSL/TLS) para evitar la interceptación de datos.
 
 # 8. Pruebas y Validación
 Se realizarán pruebas funcionales y de usuario para asegurar que todas las funcionalidades clave de la aplicación (registro, login, match, mensajería, etc.) operen correctamente en diversas plataformas y dispositivos.
