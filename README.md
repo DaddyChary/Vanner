@@ -1,4 +1,4 @@
-# Documentación Vanner
+# Vanner
 
 # 1. Introducción
 Este proyecto consiste en el desarrollo de una aplicación móvil basada en el concepto de "Tinder", cuyo objetivo es conectar entrenadores técnicos y preparadores físicos con clientes o empresas que buscan sus servicios. A través de un sistema de emparejamiento ("match"), las partes interesadas pueden interactuar y gestionar colaboraciones laborales de manera fácil y eficiente.
