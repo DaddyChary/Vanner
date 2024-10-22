@@ -47,6 +47,7 @@ public class Registro extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Obtener los valores de los campos de texto
+
                 String email = emailRegister.getText().toString();
                 String password = passwordRegister.getText().toString();
                 String confirmPassword = confirmPasswordRegister.getText().toString();
@@ -66,6 +67,7 @@ public class Registro extends AppCompatActivity {
             return;
         }
 
+        //se valida que el usuario tenga que ingresar 6 digitos y que el campo no este vacio.
         if (password.isEmpty() || confirmPassword.isEmpty() || password.length() < 6) {
             Toast.makeText(Registro.this, "Por favor, ingrese una contraseña válida de al menos 6 caracteres", Toast.LENGTH_SHORT).show();
             return;
