@@ -1,4 +1,4 @@
-package com.example.socialab2;
+package activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.socialab2.R;
 
 public class OlvidarPass extends AppCompatActivity {
     private Button backButtonOlvidarPass,recuperarPassButton;

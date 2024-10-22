@@ -1,4 +1,4 @@
-package com.example.socialab2;
+package activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.socialab2.R;
 
 public class Perfilusuario extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class Perfilusuario extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Perfilusuario.this,Login.class);
+                Intent intent = new Intent(Perfilusuario.this, Login.class);
                 startActivity(intent);
             }
         });

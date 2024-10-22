@@ -1,4 +1,4 @@
-package com.example.socialab2;
+package activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.socialab2.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton,registroButton;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Login.class);
+                Intent intent = new Intent(MainActivity.this, Login.class);
                 startActivity(intent);
             }
         });
