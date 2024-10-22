@@ -58,7 +58,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Datos del perfil"
@@ -93,14 +92,16 @@
             android:textColor="#ffffff"
             android:background="#335373"
             android:layout_marginBottom="16dp" />
-        <EditText
-            android:id="@+id/et_direccion"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Dirección"
+            android:text="Dirección"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="#ffffff"
             android:background="#335373"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:id="@+id/tv_direccion"

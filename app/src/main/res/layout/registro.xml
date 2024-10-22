@@ -1,103 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/fondo1">
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp"
-        android:text="SociaLab"
-        android:textColor="#ffffff"
-        android:background="#335373"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
+        android:background="@drawable/fondo1">
 
-    <EditText
-        android:id="@+id/nameRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre"
-        android:layout_margin="15dp"
-        android:background="#335373"
-        android:textColor="#ffffff"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="SociaLab"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
 
-    <EditText
-        android:id="@+id/lastNameRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Apellido"
-        android:layout_margin="15dp"
-        android:background="#335373"
-        android:textColor="#ffffff"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="8dp" />
 
-    <EditText
-        android:id="@+id/emailRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:layout_margin="15dp"
-        android:background="#335373"
-        android:textColor="#ffffff"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/et_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Apellido"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="8dp" />
 
-    <EditText
-        android:id="@+id/passwordRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:layout_margin="15dp"
-        android:background="#335373"
-        android:textColor="#ffffff"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/et_Rut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Rut"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
 
-    <EditText
-        android:id="@+id/confirmPasswordRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Confirmar Contraseña"
-        android:layout_margin="15dp"
-        android:background="#335373"
-        android:textColor="#ffffff"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        android:layout_margin="16dp"
-        android:backgroundTint="#335373"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="italic"/>
-    <Button
-        android:id="@+id/backButtonRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:layout_margin="16dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#335373"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="italic"/>
+        <EditText
+            android:id="@+id/tv_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Calle"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/et_numeroCasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de casa o departamento"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/et_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Comuna"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/et_region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Región"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/et_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/et_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/emailRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="#335373"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/passwordRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:background="#335373"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/confirmPasswordRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirmar Contraseña"
+            android:background="#335373"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#335373"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/backButtonRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:layout_gravity="center"
+            android:backgroundTint="#335373"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+</ScrollView>
