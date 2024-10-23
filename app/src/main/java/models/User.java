@@ -9,13 +9,14 @@ public class User {
         private String region;
         private String phone;
         private String mail;
+        private String street;
         private String userType;
         private String specilization;
 
     public User() {
     }
 
-    public User(String name, String lastName, String rut, String nHome, String commune, String region, String phone, String mail, String userType, String specilization) {
+    public User(String name, String lastName, String rut, String nHome, String commune, String region, String phone, String mail, String userType, String specilization,String street) {
         this.name = name;
         this.lastName = lastName;
         this.rut = rut;
@@ -26,6 +27,7 @@ public class User {
         this.mail = mail;
         this.userType = userType;
         this.specilization = specilization;
+        this.street = street;
     }
 
     public String getName() {
@@ -108,9 +110,17 @@ public class User {
         this.specilization = specilization;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
     @Override
     public String toString() {
-        return "Usurio{" +
+        return "User{" +
                 "name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", rut='" + rut + '\'' +
@@ -119,6 +129,7 @@ public class User {
                 ", region='" + region + '\'' +
                 ", phone='" + phone + '\'' +
                 ", mail='" + mail + '\'' +
+                ", street='" + street + '\'' +
                 ", userType='" + userType + '\'' +
                 ", specilization='" + specilization + '\'' +
                 '}';
