@@ -78,10 +78,10 @@ public class Registro extends AppCompatActivity {
         String id = databaseReference.push().getKey();
         databaseReference.child(id).setValue(user)
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getContext(), "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(getContext(), "Error al guardar el usuario", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Error al guardar el usuario", Toast.LENGTH_SHORT).show();
                 });
 
     }

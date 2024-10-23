@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
-    tools:context=".MainActivity">
+    tools:context="activities.MainActivity">
 
-    <ScrollView
+<ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -37,8 +37,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@android:color/darker_gray"
-                android:hint="Foto de Perfil"
-                android:src="@drawable/ic_profile_placeholder" />
+                android:hint="Foto de Perfil"/>
 
             <TextView
                 android:id="@+id/photoText"
