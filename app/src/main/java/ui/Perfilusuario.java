@@ -22,6 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import models.User;
 
 public class Perfilusuario extends AppCompatActivity {
@@ -148,17 +151,26 @@ public class Perfilusuario extends AppCompatActivity {
             // Inicializar la referencia a la base de datos
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
 
-            // Crear un objeto actualizado con los nuevos datos
-            User usuarioActualizado = new User(userId, nombre, apellido,direccion,numeroCasa,comuna,region,telefono,correo);
+            // Crear un mapa con los nuevos datos para actualizar
+            Map<String, Object> actualizaciones = new HashMap<>();
+            actualizaciones.put("nombre", nombre);
+            actualizaciones.put("apellido", apellido);
+            actualizaciones.put("direccion", direccion);
+            actualizaciones.put("numeroCasa", numeroCasa);
+            actualizaciones.put("comuna", comuna);
+            actualizaciones.put("region", region);
+            actualizaciones.put("telefono", telefono);
+            actualizaciones.put("correo", correo);
 
-            // Actualizar en la base de datos de Firebase
-            databaseReference.setValue(usuarioActualizado)
+            // Actualizar los campos específicos en la base de datos de Firebase sin eliminar el resto
+            databaseReference.updateChildren(actualizaciones)
                     .addOnSuccessListener(aVoid -> Toast.makeText(Perfilusuario.this, "Perfil actualizado", Toast.LENGTH_SHORT).show())
                     .addOnFailureListener(e -> Toast.makeText(Perfilusuario.this, "Error al actualizar el perfil", Toast.LENGTH_SHORT).show());
         } else {
             Toast.makeText(Perfilusuario.this, "Error: Usuario no autenticado", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     // Método para eliminar el perfil del usuario
