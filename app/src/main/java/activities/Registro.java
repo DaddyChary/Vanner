@@ -5,7 +5,10 @@ import static java.security.AccessController.getContext;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.socialab2.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,179 +31,167 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import models.User;
 
-public class Registro extends AppCompatActivity {
-
+public class Registro extends Fragment {
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private EditText emailRegister, passwordRegister, confirmPasswordRegister,et_nombre,et_apellido,et_rut,tv_direcion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
+    private EditText emailRegister, passwordRegister, confirmPasswordRegister, et_nombre, et_apellido, et_rut, tv_direcion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo;
     private Button buttonRegister, backButtonRegister;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
+        View view = inflater.inflate(R.layout.registro, container, false);
 
         // Inicializa Firebase Database y obtiene la referencia
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        // Nodo "contactos" en la base de datos
         databaseReference = database.getReference("users");
 
-        // Obtiene la instancia actual de FirebaseAuth para manejar la autenticación de usuarios
+        // Inicializa Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        et_nombre = findViewById(R.id.et_nombre);
-        et_apellido = findViewById(R.id.et_apellido);
-        et_rut = findViewById(R.id.et_Rut);
-        tv_direcion = findViewById(R.id.tv_direccion);
-        et_numeroCasa = findViewById(R.id.et_numeroCasa);
-        et_comuna = findViewById(R.id.et_comuna);
-        et_region = findViewById(R.id.et_region);
-        et_telefono = findViewById(R.id.et_telefono);
-        et_correo = findViewById(R.id.et_correo);
-        emailRegister = findViewById(R.id.emailRegister);
-        passwordRegister = findViewById(R.id.passwordRegister);
-        confirmPasswordRegister = findViewById(R.id.confirmPasswordRegister);
-        buttonRegister = findViewById(R.id.buttonRegister);
-        backButtonRegister = findViewById(R.id.backButtonRegister);
+        // Referencias a los elementos de la vista
+        et_nombre = view.findViewById(R.id.et_nombre);
+        et_apellido = view.findViewById(R.id.et_apellido);
+        et_rut = view.findViewById(R.id.et_Rut);
+        tv_direcion = view.findViewById(R.id.tv_direccion);
+        et_numeroCasa = view.findViewById(R.id.et_numeroCasa);
+        et_comuna = view.findViewById(R.id.et_comuna);
+        et_region = view.findViewById(R.id.et_region);
+        et_telefono = view.findViewById(R.id.et_telefono);
+        et_correo = view.findViewById(R.id.et_correo);
+        emailRegister = view.findViewById(R.id.emailRegister);
+        passwordRegister = view.findViewById(R.id.passwordRegister);
+        confirmPasswordRegister = view.findViewById(R.id.confirmPasswordRegister);
+        buttonRegister = view.findViewById(R.id.buttonRegister);
+        backButtonRegister = view.findViewById(R.id.backButtonRegister);
 
         // Acción para el botón de regresar
-        backButtonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        backButtonRegister.setOnClickListener(view1 -> getActivity().getSupportFragmentManager().popBackStack());
 
         // Acción para el botón de registrar
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Obtener los valores de los campos de texto
+        buttonRegister.setOnClickListener(v -> guardarUsuario());
 
-                String email = emailRegister.getText().toString();
-                String password = passwordRegister.getText().toString();
-                String confirmPassword = confirmPasswordRegister.getText().toString();
-                String name = et_nombre.getText().toString();
-                String lastName = et_apellido.getText().toString();
-                String street = tv_direcion.getText().toString();
-                String nHome = et_numeroCasa.getText().toString();
-                String rut = et_rut.getText().toString();
-                String comunne = et_comuna.getText().toString();
-                String region = et_region.getText().toString();
-                String phone = et_telefono.getText().toString();
-                String mail = et_correo.getText().toString();
-
-                //Pasando el rut a la funcion para validarlo
-                validarRut(rut);
-                // Pasar los valores a la función registerUser
-                registerUser(email, password, confirmPassword);
-
-            }
-        });
+        return view;
     }
 
-    //Funcion para validar rut chileno
-    public String validarRut(String rut) {
-        // Eliminar puntos y guión
-        rut = rut.replace(".", "").replace("-", "");
+    // Función para guardar el usuario
+    private void guardarUsuario() {
+        String email = emailRegister.getText().toString().trim();
+        String password = passwordRegister.getText().toString().trim();
+        String confirmPassword = confirmPasswordRegister.getText().toString().trim();
+        String nombre = et_nombre.getText().toString().trim();
+        String apellido = et_apellido.getText().toString().trim();
+        String rut = et_rut.getText().toString().trim();
+        String direccion = tv_direcion.getText().toString().trim();
+        String numeroCasa = et_numeroCasa.getText().toString().trim();
+        String comuna = et_comuna.getText().toString().trim();
+        String region = et_region.getText().toString().trim();
+        String telefono = et_telefono.getText().toString().trim();
+        String correo = et_correo.getText().toString().trim();
 
-        // Verificar que el RUT tenga al menos 2 caracteres
-        if (rut.length() < 2) {
-            Toast.makeText(Registro.this, "El RUT es demasiado corto", LENGTH_SHORT).show();
-            return "El RUT es demasiado corto";
+        // Validar campos obligatorios
+        if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+            Toast.makeText(getContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        // Separar el cuerpo del dígito verificador
+        // Validar el rut usando la función
+        if (!validarRut(rut)) {
+            return;
+        }
+
+        // Validar el correo electrónico (debe ser de Gmail)
+        if (!email.endsWith("@gmail.com")) {
+            Toast.makeText(getContext(), "Ingrese un correo Gmail válido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validar la contraseña
+        if (password.length() < 6 || !password.equals(confirmPassword)) {
+            Toast.makeText(getContext(), "Las contraseñas no coinciden o son menores a 6 caracteres", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Registrar el usuario en Firebase Authentication
+        registerUser(email, password);
+    }
+
+    // Validar el RUT chileno
+    private boolean validarRut(String rut) {
+        rut = rut.replace(".", "").replace("-", "");
+        if (rut.length() < 2) {
+            Toast.makeText(getContext(), "El RUT es demasiado corto", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         String rutCuerpo = rut.substring(0, rut.length() - 1);
         char dv = rut.charAt(rut.length() - 1);
 
-        // Convertir el cuerpo del RUT a entero
         int rutNumero;
         try {
             rutNumero = Integer.parseInt(rutCuerpo);
         } catch (NumberFormatException e) {
-            Toast.makeText(Registro.this, "El RUT contiene caracteres no válidos", LENGTH_SHORT).show();
-            return "El RUT contiene caracteres no válidos";
+            Toast.makeText(getContext(), "El RUT contiene caracteres no válidos", Toast.LENGTH_SHORT).show();
+            return false;
         }
 
-        // Calcular el dígito verificador
         int m = 0, s = 1;
         while (rutNumero != 0) {
             s = (s + rutNumero % 10 * (9 - m++ % 6)) % 11;
             rutNumero /= 10;
         }
+
         char dvCalculado = (s > 0) ? (char) (s + 47) : 'K';
-
-        // Comparar el dígito verificador calculado con el proporcionado
         if (dvCalculado == dv) {
-            Toast.makeText(Registro.this, "El RUT es válido", LENGTH_SHORT).show();
-            return "El RUT es válido";
+            return true;
         } else {
-            Toast.makeText(Registro.this, "El dígito verificador es incorrecto", LENGTH_SHORT).show();
-            return "El dígito verificador es incorrecto";
+            Toast.makeText(getContext(), "El dígito verificador es incorrecto", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 
-    //Funcion para agregar un usuario
-    private void AddUser(User user) {
-        String id = databaseReference.push().getKey();
-        databaseReference.child(id).setValue(user)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error al guardar el usuario", Toast.LENGTH_SHORT).show();
-                });
-    }
-
-    // Función para registrar al usuario
-    private void registerUser(String email, String password, String confirmPassword) {
-        // Validar que el email no esté vacío y que sea de Gmail
-        if (email.isEmpty() || !email.endsWith("@gmail.com")) {
-            Toast.makeText(Registro.this, "Por favor, ingrese un correo de Gmail válido", LENGTH_SHORT).show();
-            return;
-        }
-
-        //se valida que el usuario tenga que ingresar 6 digitos y que el campo no este vacio.
-        if (password.isEmpty() || confirmPassword.isEmpty() || password.length() < 6) {
-            Toast.makeText(Registro.this, "Por favor, ingrese una contraseña válida de al menos 6 caracteres", LENGTH_SHORT).show();
-            return;
-        }
-
-        // Validar que las contraseñas coincidan
-        if (!password.equals(confirmPassword)) {
-            Toast.makeText(Registro.this, "Las contraseñas no coinciden", LENGTH_SHORT).show();
-            return;
-        }
-
-        // Crear usuario en Firebase Authentication
+    // Función para registrar el usuario en Firebase
+    private void registerUser(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user); // Actualiza la UI con el usuario registrado
-                        } else {
-                            //log.w("AUTH","createUserWithEmail:failure",task.getException());
-                            Toast.makeText(Registro.this, "Error de Autentificación", LENGTH_SHORT).show();
-                            updateUI(null); // Manejar error
-                        }
+                .addOnCompleteListener(getActivity(), task -> {
+                    if (task.isSuccessful()) {
+                        // Guardar información adicional en la base de datos
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        guardarDatosAdicionales(user);
+                    } else {
+                        Toast.makeText(getContext(), "Error en el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    //  Función para actualizar la UI después del registro
-    private void updateUI(FirebaseUser user) {
-        if (user != null) {
-            Intent intent = new Intent(Registro.this, Perfilusuario.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(Registro.this, "Autenticación fallida. Por favor, inténtalo de nuevo.", LENGTH_SHORT).show();
-        }
+    // Guardar datos adicionales del usuario
+    private void guardarDatosAdicionales(FirebaseUser user) {
+        if (user == null) return;
+
+        String id = user.getUid();
+        String nombre = et_nombre.getText().toString().trim();
+        String apellido = et_apellido.getText().toString().trim();
+        String rut = et_rut.getText().toString().trim();
+        String direccion = tv_direcion.getText().toString().trim();
+        String numeroCasa = et_numeroCasa.getText().toString().trim();
+        String comuna = et_comuna.getText().toString().trim();
+        String region = et_region.getText().toString().trim();
+        String telefono = et_telefono.getText().toString().trim();
+        String correo = et_correo.getText().toString().trim();
+
+        // Asignar valores predeterminados a los campos adicionales
+        String userType = "general"; // o el valor que desees
+        String specialization = "N/A"; // o el valor que desees
+
+        // Crear el objeto User con los campos requeridos
+        User usuario = new User(nombre, apellido, rut, numeroCasa, comuna, region, telefono, correo, userType, specialization, direccion);
+
+        // Guardar en la base de datos
+        databaseReference.child(id).setValue(usuario)
+                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(getContext(), "Error al guardar los datos", Toast.LENGTH_SHORT).show());
     }
 }
 
