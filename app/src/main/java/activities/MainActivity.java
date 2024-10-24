@@ -7,9 +7,10 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.socialab2.R;
+
+import ui.Registro;
 
 public class MainActivity extends AppCompatActivity {
     private Button loginButton,registroButton;
@@ -34,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
         registroButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, Registro.class);
-//                startActivity(intent);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.registro, new Registro()); // Asegúrate de usar el ID correcto del contenedor donde se colocan los fragmentos
-                transaction.addToBackStack(null); // Esto te permite volver al fragmento anterior
-                transaction.commit();
+                Intent intent = new Intent(MainActivity.this, Registro.class);
+               startActivity(intent);
+
             }
         });
         }

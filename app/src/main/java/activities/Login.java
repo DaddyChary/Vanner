@@ -84,7 +84,7 @@ public class Login extends AppCompatActivity {
                             Log.d("AUTH","singInWithEmail:succes");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            Intent intent = new Intent(Login.this, Perfilusuario.class);
+                            Intent intent = new Intent(Login.this,Perfilusuario.class);
                             startActivity(intent);
                             finish();
                         }else {
