@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@drawable/fondo1">
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Campo para eliminar"
+        android:layout_marginBottom="20dp"
+        android:background="#808080"
+        android:textStyle="italic"/>
+
+    <Button
+        android:id="@+id/btnMostrarUsuarios"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Muestre los usuarios"
+        android:background="#808080"
+        android:textStyle="italic"/>
+
+    <TableLayout
+        android:id="@+id/tableUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:stretchColumns="1">
+
+
+
+    </TableLayout>
+
+</LinearLayout>

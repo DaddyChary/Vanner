@@ -22,13 +22,14 @@
                 android:id="@+id/logoTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vanner"
-                android:textColor="@color/white"
-                android:textSize="54sp"
-                android:textStyle="bold"
-                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_marginTop="55dp" />
+                android:layout_marginTop="55dp"
+                android:gravity="center"
+                android:text="Vanner"
+                android:textColor="#000000"
+                android:background="#808080"
+                android:textSize="54sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/profileImageView"
@@ -36,14 +37,13 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:background="@android:color/darker_gray"
                 android:hint="Foto de Perfil"/>
 
             <TextView
                 android:id="@+id/photoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PHOTO\nPROFILE"
+                android:text="Foto \ Perfil"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -58,7 +58,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp" />
 
             <EditText
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Apellido"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Rut"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Dirección"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Número de casa o departamento"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Comuna"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Región"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Teléfono"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp" />
 
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Correo"
                 android:textColor="#ffffff"
-                android:background="#335373"
+                android:background="#808080"
                 android:padding="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp" />
