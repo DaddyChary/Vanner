@@ -16,6 +16,7 @@ public class User {
     public User() {
     }
 
+
     public User(String name, String lastName, String rut, String nHome, String commune, String region, String phone, String mail, String userType, String specilization,String street) {
         this.name = name;
         this.lastName = lastName;
@@ -29,6 +30,10 @@ public class User {
         this.specilization = specilization;
         this.street = street;
     }
+
+    public User(String userId, String nombre, String apellido, String direccion, String numeroCasa, String comuna, String region, String telefono, String correo) {
+    }
+
 
     public String getName() {
         return name;

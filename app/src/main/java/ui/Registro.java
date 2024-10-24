@@ -20,9 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import activities.Login;
 import activities.MainActivity;
-import activities.Perfilusuario;
 import models.User;
 
 public class Registro extends AppCompatActivity {

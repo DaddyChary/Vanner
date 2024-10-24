@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.socialab2.R;
 
+import ui.Login;
 import ui.Registro;
 
 public class MainActivity extends AppCompatActivity {
