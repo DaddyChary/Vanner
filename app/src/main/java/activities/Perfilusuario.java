@@ -57,7 +57,7 @@ public class Perfilusuario extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Perfilusuario.this, Login.class);
+                Intent intent = new Intent(Perfilusuario.this, ui.Login.class);
                 startActivity(intent);
             }
         });
