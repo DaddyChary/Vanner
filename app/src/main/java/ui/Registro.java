@@ -220,7 +220,7 @@ public class Registro extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     // Datos guardados exitosamente
                     Toast.makeText(Registro.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Registro.this, Perfilusuario.class);
+                    Intent intent = new Intent(Registro.this, Login.class);
                     startActivity(intent);
                 })
                 .addOnFailureListener(e -> {
