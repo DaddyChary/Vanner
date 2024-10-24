@@ -30,8 +30,8 @@ import models.User;
 public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit, btn_delete, btn_logout;
-    private EditText et_nombre, et_apellido, et_Rut;
-    private TextView tv_direccion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo;
+    private EditText et_nombre, et_apellido, et_Rut,et_direccion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo;
+//    private TextView ;
     private DatabaseReference databaseReference;
 
     @Override
@@ -46,7 +46,7 @@ public class Perfilusuario extends AppCompatActivity {
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_Rut = findViewById(R.id.et_Rut);
-        tv_direccion = findViewById(R.id.tv_direccion);
+        et_direccion = findViewById(R.id.et_direccion);
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
@@ -104,7 +104,7 @@ public class Perfilusuario extends AppCompatActivity {
                         et_nombre.setText(usuario.getName());
                         et_apellido.setText(usuario.getLastName());
                         et_Rut.setText(usuario.getRut());
-                        tv_direccion.setText(usuario.getStreet());
+                        et_direccion.setText(usuario.getStreet());
                         et_numeroCasa.setText(usuario.getnHome());
                         et_comuna.setText(usuario.getCommune());
                         et_region.setText(usuario.getRegion());
@@ -124,11 +124,10 @@ public class Perfilusuario extends AppCompatActivity {
         });
     }
 
-    // Método para actualizar el perfil del usuario
     private void actualizarPerfil() {
         String nombre = et_nombre.getText().toString();
         String apellido = et_apellido.getText().toString();
-        String direccion = tv_direccion.getText().toString(); // Uso tv_direccion como dirección
+        String direccion = et_direccion.getText().toString(); // Cambio de tv_direccion a et_direccion
         String numeroCasa = et_numeroCasa.getText().toString();
         String comuna = et_comuna.getText().toString();
         String region = et_region.getText().toString();
@@ -153,14 +152,14 @@ public class Perfilusuario extends AppCompatActivity {
 
             // Crear un mapa con los nuevos datos para actualizar
             Map<String, Object> actualizaciones = new HashMap<>();
-            actualizaciones.put("nombre", nombre);
-            actualizaciones.put("apellido", apellido);
-            actualizaciones.put("direccion", direccion);
-            actualizaciones.put("numeroCasa", numeroCasa);
-            actualizaciones.put("comuna", comuna);
-            actualizaciones.put("region", region);
-            actualizaciones.put("telefono", telefono);
-            actualizaciones.put("correo", correo);
+            actualizaciones.put("name", nombre); // Cambiado a "name"
+            actualizaciones.put("lastName", apellido); // Cambiado a "lastName"
+            actualizaciones.put("street", direccion); // Cambiado a "street"
+            actualizaciones.put("nHome", numeroCasa); // Cambiado a "nHome"
+            actualizaciones.put("commune", comuna); // Cambiado a "commune"
+            actualizaciones.put("region", region); // Sin cambio, ya que coincide
+            actualizaciones.put("phone", telefono); // Cambiado a "phone"
+            actualizaciones.put("mail", correo); // Cambiado a "mail"
 
             // Actualizar los campos específicos en la base de datos de Firebase sin eliminar el resto
             databaseReference.updateChildren(actualizaciones)
@@ -172,7 +171,6 @@ public class Perfilusuario extends AppCompatActivity {
     }
 
 
-
     // Método para eliminar el perfil del usuario
     private void eliminarPerfil() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -180,30 +178,42 @@ public class Perfilusuario extends AppCompatActivity {
         if (user != null) {
             String userId = user.getUid();
 
+            // Inicializar la referencia a la base de datos
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
+
             // Eliminar el perfil del usuario de la base de datos
             databaseReference.child(userId).removeValue()
                     .addOnSuccessListener(aVoid -> {
-                        Toast.makeText(Perfilusuario.this, "Perfil eliminado", Toast.LENGTH_SHORT).show();
+                        // Ahora, eliminar al usuario de Firebase Authentication
+                        user.delete().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Perfilusuario.this, "Perfil y autenticación eliminados", Toast.LENGTH_SHORT).show();
 
-                        // Limpiar los campos después de eliminar el perfil
-                        et_nombre.setText("");
-                        et_apellido.setText("");
-                        et_Rut.setText("");
-                        tv_direccion.setText("");
-                        et_numeroCasa.setText("");
-                        et_comuna.setText("");
-                        et_region.setText("");
-                        et_telefono.setText("");
-                        et_correo.setText("");
+                                // Limpiar los campos después de eliminar el perfil
+                                et_nombre.setText("");
+                                et_apellido.setText("");
+                                et_Rut.setText("");
+                                et_direccion.setText("");
+                                et_numeroCasa.setText("");
+                                et_comuna.setText("");
+                                et_region.setText("");
+                                et_telefono.setText("");
+                                et_correo.setText("");
 
-                        // Redirigir al usuario a la ventana de login después de eliminar el perfil
-                        Intent intent = new Intent(Perfilusuario.this, Login.class);
-                        startActivity(intent);
-                        finish();
+                                // Redirigir al usuario a la ventana de login después de eliminar el perfil
+                                Intent intent = new Intent(Perfilusuario.this, Login.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Manejar error al eliminar el usuario de Firebase Authentication
+                                Toast.makeText(Perfilusuario.this, "Error al eliminar la autenticación", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     })
                     .addOnFailureListener(e -> Toast.makeText(Perfilusuario.this, "Error al eliminar el perfil", Toast.LENGTH_SHORT).show());
         } else {
             Toast.makeText(Perfilusuario.this, "Error: Usuario no autenticado", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
