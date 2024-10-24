@@ -1,4 +1,4 @@
-package activities;
+package ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import activities.MainActivity;
+import activities.OlvidarPass;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -81,15 +84,19 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Log.d("AUTH","singInWithEmail:succes");
+                            // Autenticación exitosa
+                            Log.d("AUTH", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            Intent intent = new Intent(Login.this,Perfilusuario.class);
+
+                            // Iniciar la actividad de perfil y pasar el UID del usuario
+                            Intent intent = new Intent(Login.this, Perfilusuario.class);
+                            intent.putExtra("userId", user.getUid()); // Pasar UID del usuario
                             startActivity(intent);
                             finish();
-                        }else {
-                            Log.w("AUTH","signInWithEmail:failure",task.getException());
-                            Toast.makeText(Login.this,"Credenciales Incorrectas",Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Si la autenticación falla
+                            Log.w("AUTH", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(Login.this, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
                     }

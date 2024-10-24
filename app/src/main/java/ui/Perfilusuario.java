@@ -1,4 +1,4 @@
-package activities;
+package ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,15 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.socialab2.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,18 +22,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import models.User;
-import ui.Registro;
 
 public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit,btn_delete,btn_logout;
     private EditText et_nombre,et_apellido,et_Rut;
     private TextView tv_direccion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
-
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.perfilusuario);
 
+        // Inicializar elementos de la interfaz
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);
         btn_logout = findViewById(R.id.btn_logout);
@@ -47,6 +46,15 @@ public class Perfilusuario extends AppCompatActivity {
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
         et_correo = findViewById(R.id.et_correo);
+
+        // Obtener el UID del usuario pasado desde la actividad de login
+        String userId = getIntent().getStringExtra("userId");
+
+        // Cargar los datos del usuario
+        if (userId != null) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            cargarDatosUsuario(user);
+        }
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
