@@ -13,8 +13,8 @@
         android:text="Mensajes"
         android:textSize="60sp"
         android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:background="@drawable/border"
+        android:textColor="#000000"
+        android:background="#808080"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="180dp"/>
@@ -40,7 +40,8 @@
             android:hint="Enviar Mensaje"
             android:padding="10dp"
             android:layout_marginStart="8dp"
-            android:background="@android:drawable/editbox_background"
+            android:textColor="#000000"
+            android:background="#808080"
             android:textSize="16sp"/>
 
     </LinearLayout>
@@ -67,17 +68,19 @@
             android:hint="Enviar Mensaje"
             android:padding="10dp"
             android:layout_marginStart="8dp"
-            android:background="@android:drawable/editbox_background"
+            android:textColor="#000000"
+            android:background="#808080"
             android:textSize="16sp"/>
 
     </LinearLayout>
 
-    <!-- Back Button -->
     <Button
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="Retroceder"
+        android:textColor="#000000"
+        android:backgroundTint="#808080"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"/>
 

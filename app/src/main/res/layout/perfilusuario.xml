@@ -34,16 +34,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Editar"
-                    android:textColor="#ffffff"
-                    android:backgroundTint="#335373" />
+                    android:textColor="#000000"
+                    android:backgroundTint="#808080" />
 
                 <Button
                     android:id="@+id/btn_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Eliminar"
-                    android:textColor="#ffffff"
-                    android:backgroundTint="#335373"
+                    android:textColor="#000000"
+                    android:backgroundTint="#808080"
                     android:layout_marginTop="8dp" />
 
                 <Button
@@ -51,8 +51,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Salir de Perfil"
-                    android:textColor="#ffffff"
-                    android:backgroundTint="#335373"
+                    android:textColor="#000000"
+                    android:backgroundTint="#808080"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
         </LinearLayout>
@@ -63,8 +63,8 @@
             android:text="Datos del perfil"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
@@ -73,34 +73,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
-            android:textColor="#ffffff"
-            android:background="#335373" />
+            android:textColor="#000000"
+            android:background="#808080"
+            android:layout_marginTop="16dp"/>
 
         <EditText
             android:id="@+id/et_apellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Apellido"
-            android:textColor="#ffffff"
-            android:background="#335373" />
+            android:textColor="#000000"
+            android:background="#808080"
+            android:layout_marginTop="16dp"/>
 
         <EditText
             android:id="@+id/et_Rut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Rut"
-            android:textColor="#ffffff"
-            android:background="#335373"
-            android:layout_marginBottom="16dp" />
+            android:textColor="#000000"
+            android:background="#808080"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dirección"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
@@ -109,8 +112,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Calle"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -118,8 +121,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Número de casa o departamento"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -127,8 +130,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Comuna"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -136,8 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Región"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -145,8 +148,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Teléfono"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <EditText
@@ -154,16 +157,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Entrenadores"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:layout_marginBottom="16dp" />
 
         <LinearLayout
@@ -184,8 +187,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entrenadores"
-                    android:textColor="#ffffff"
-                    android:background="#335373"
+                    android:textColor="#000000"
+                    android:background="#808080"
                     android:layout_marginEnd="16dp" />
 
                 <RadioButton
@@ -193,8 +196,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Técnicos"
-                    android:textColor="#ffffff"
-                    android:background="#335373"
+                    android:textColor="#000000"
+                    android:background="#808080"
                     android:layout_marginEnd="16dp" />
 
                 <RadioButton
@@ -202,40 +205,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Empresas"
-                    android:textColor="#ffffff"
-                    android:background="#335373" />
-
+                    android:textColor="#000000"
+                    android:background="#808080"/>
             </RadioGroup>
-
-
         </LinearLayout>
 
         <EditText
+            android:id="@+id/Espelizacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Especialización"
-            android:textColor="#ffffff"
-            android:background="#335373"
+            android:textColor="#000000"
+            android:background="#808080"
             android:padding="20dp"
             android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:textColor="#ffffff"
-            android:backgroundTint="#335373" />
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Regresar"
-            android:textColor="#ffffff"
-            android:backgroundTint="#335373"
+            android:textColor="#000000"
+            android:backgroundTint="#808080"
             android:layout_marginTop="16dp" />
-
     </LinearLayout>
-
 </ScrollView>
