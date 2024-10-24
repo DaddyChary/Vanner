@@ -28,7 +28,8 @@ import ui.Registro;
 public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit,btn_delete,btn_logout;
-    private EditText et_nombre,et_apellido,et_Rut,tv_direccion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
+    private EditText et_nombre,et_apellido,et_Rut;
+    private TextView tv_direccion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +107,4 @@ public class Perfilusuario extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }
