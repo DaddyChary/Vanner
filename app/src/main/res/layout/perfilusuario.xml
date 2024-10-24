@@ -92,7 +92,8 @@
             android:textColor="#ffffff"
             android:background="#335373"
             android:layout_marginBottom="16dp" />
-        <TextView
+
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dirección"
@@ -103,39 +104,41 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/tv_direccion"
+        <EditText
+            android:id="@+id/et_direccion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Calle"
             android:textColor="#ffffff"
             android:background="#335373"
             android:layout_marginBottom="16dp" />
-        <TextView
+
+        <EditText
             android:id="@+id/et_numeroCasa"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Numero de casa o departamento"
-            android:textColor="#ffffff"
-            android:background="#335373"
-            android:layout_marginBottom="16dp" />
-        <TextView
-            android:id="@+id/et_comuna"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Comuna"
-            android:textColor="#ffffff"
-            android:background="#335373"
-            android:layout_marginBottom="16dp" />
-        <TextView
-            android:id="@+id/et_region"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Región"
+            android:layout_height="wrap_content"
+            android:hint="Número de casa o departamento"
             android:textColor="#ffffff"
             android:background="#335373"
             android:layout_marginBottom="16dp" />
 
+        <EditText
+            android:id="@+id/et_comuna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Comuna"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/et_region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Región"
+            android:textColor="#ffffff"
+            android:background="#335373"
+            android:layout_marginBottom="16dp" />
 
         <EditText
             android:id="@+id/et_telefono"
@@ -169,31 +172,45 @@
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/rgGrupoEntrenadores"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Entrenadores"
-                android:textColor="#ffffff"
-                android:background="#335373"
-                android:layout_marginEnd="16dp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Técnicos"
-                android:textColor="#ffffff"
-                android:background="#335373"
-                android:layout_marginEnd="16dp" />
+                <RadioButton
+                    android:id="@+id/rbEntrenadores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrenadores"
+                    android:textColor="#ffffff"
+                    android:background="#335373"
+                    android:layout_marginEnd="16dp" />
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Empresas"
-                android:textColor="#ffffff"
-                android:background="#335373" />
+                <RadioButton
+                    android:id="@+id/rbTecnicos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Técnicos"
+                    android:textColor="#ffffff"
+                    android:background="#335373"
+                    android:layout_marginEnd="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rbEmpresas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Empresas"
+                    android:textColor="#ffffff"
+                    android:background="#335373" />
+
+            </RadioGroup>
+
+
         </LinearLayout>
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Especialización"
@@ -201,7 +218,6 @@
             android:background="#335373"
             android:padding="20dp"
             android:layout_marginBottom="16dp" />
-
 
         <Button
             android:id="@+id/btn_save"
@@ -221,4 +237,5 @@
             android:layout_marginTop="16dp" />
 
     </LinearLayout>
+
 </ScrollView>

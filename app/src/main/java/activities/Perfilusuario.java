@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +29,9 @@ import ui.Registro;
 public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit,btn_delete,btn_logout;
-    private EditText et_nombre,et_apellido,et_Rut;
-    private TextView tv_direccion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
+    private EditText et_nombre,et_apellido,et_Rut,et_direccion,et_numeroCasa,et_comuna,et_region,et_telefono,et_correo;
+    private RadioButton rbEntrenadores, rbTecnicos, rbEmpresas;
+    private RadioGroup rgGrupoEntrenadores;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +43,16 @@ public class Perfilusuario extends AppCompatActivity {
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_Rut = findViewById(R.id.et_Rut);
-        tv_direccion = findViewById(R.id.tv_direccion);
+        et_direccion = findViewById(R.id.et_direccion);
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
         et_correo = findViewById(R.id.et_correo);
+        rbEntrenadores = findViewById(R.id.rbEntrenadores);
+        rbTecnicos = findViewById(R.id.rbTecnicos);
+        rbEmpresas = findViewById(R.id.rbEmpresas);
+        rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +91,7 @@ public class Perfilusuario extends AppCompatActivity {
                         et_nombre.setText(usuario.getName());
                         et_apellido.setText(usuario.getLastName());
                         et_Rut.setText(usuario.getRut());
-                        tv_direccion.setText(usuario.getStreet());
+                        et_direccion.setText(usuario.getStreet());
                         et_numeroCasa.setText(usuario.getnHome());
                         et_comuna.setText(usuario.getCommune());
                         et_region.setText(usuario.getRegion());
