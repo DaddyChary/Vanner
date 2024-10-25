@@ -19,6 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import activities.MainActivity;
 import activities.OlvidarPass;
@@ -68,31 +73,64 @@ public class Login extends AppCompatActivity {
         });
         }
 
-    private void singIn(String email,String password){
+    private void singIn(String email, String password) {
 
         if (email.isEmpty() || !email.endsWith("@gmail.com")) {
             Toast.makeText(Login.this, "Por favor, ingrese un correo de Gmail válido", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (password.isEmpty() ||password.length() < 6) {
+        if (password.isEmpty() || password.length() < 6) {
             Toast.makeText(Login.this, "Por favor, ingrese una contraseña válida de al menos 6 caracteres", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email,password)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             // Autenticación exitosa
                             Log.d("AUTH", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null) {
+                                // Obtener el UID del usuario
+                                String userId = user.getUid();
 
-                            // Iniciar la actividad de perfil y pasar el UID del usuario
-                            Intent intent = new Intent(Login.this, Perfilusuario.class);
-                            intent.putExtra("userId", user.getUid()); // Pasar UID del usuario
-                            startActivity(intent);
-                            finish();
+                                // Referencia a la base de datos para el usuario
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
+
+                                // Recuperar los datos del usuario
+                                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.exists()) {
+                                            // Obtener el tipo de usuario
+                                            String tipoUsuario = dataSnapshot.child("userType").getValue(String.class);
+
+                                            if (tipoUsuario != null && tipoUsuario.equals("admin")) {
+                                                // Mensaje para admin
+                                                Toast.makeText(Login.this, "Bienvenido Admin", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                // Mensaje para cualquier otro tipo de usuario
+                                                Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            // Iniciar la actividad de perfil y pasar el UID del usuario
+                                            Intent intent = new Intent(Login.this, Perfilusuario.class);
+                                            intent.putExtra("userId", userId); // Pasar UID del usuario
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(Login.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        Log.e("DB_ERROR", "Error al obtener datos del usuario", databaseError.toException());
+                                    }
+                                });
+                            }
                         } else {
                             // Si la autenticación falla
                             Log.w("AUTH", "signInWithEmail:failure", task.getException());
@@ -101,7 +139,8 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-        }
+    }
+
 
         private void updateUI(FirebaseUser user){
         if (user != null) {
