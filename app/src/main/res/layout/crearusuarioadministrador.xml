@@ -115,6 +115,26 @@
                     android:layout_marginTop="8dp" />
 
                 <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:textColor="#ffffff"
+                    android:background="@android:color/darker_gray"
+                    android:padding="8dp"
+                    android:layout_marginTop="8dp" />
+
+                <EditText
+                    android:id="@+id/et_confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirmar Contraseña"
+                    android:textColor="#ffffff"
+                    android:background="@android:color/darker_gray"
+                    android:padding="8dp"
+                    android:layout_marginTop="8dp" />
+
+                <EditText
                     android:id="@+id/et_correo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +145,10 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp" />
 
+
+
                 <RadioGroup
+                    android:id="@+id/rgGrupoTipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -163,15 +186,15 @@
                 </RadioGroup>
 
                 <Button
-                    android:id="@+id/btn_editar"
+                    android:id="@+id/btn_crear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="#808080"
                     android:text=" Crear cuenta"
                     android:textColor="#000000"
-                    android:backgroundTint="#808080"
                     android:textSize="20sp"
-                    android:textStyle="italic"
-                    android:layout_marginBottom="16dp" />
+                    android:textStyle="italic" />
 
                 <Button
                     android:id="@+id/btn_volver"
