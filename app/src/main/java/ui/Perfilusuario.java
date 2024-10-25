@@ -119,6 +119,19 @@ public class Perfilusuario extends AppCompatActivity {
                         et_region.setText(usuario.getRegion());
                         et_telefono.setText(usuario.getPhone());
                         et_correo.setText(usuario.getMail());
+                        Espelizacion.setText(usuario.getSpecialization());
+                        String tipoUsuario = usuario.getUserType();
+
+                        // Verificar el tipo de usuario y seleccionar el RadioButton correspondiente
+                        if (tipoUsuario.equals("entrenador")) {
+                            rbEntrenadores.setChecked(true);
+                        } else if (tipoUsuario.equals("técnico")) {
+                            rbTecnicos.setChecked(true);
+                        } else if (tipoUsuario.equals("empresa")) {
+                            rbEmpresas.setChecked(true);
+                        }
+
+
                     }
                 } else {
                     Toast.makeText(Perfilusuario.this, "No se encontraron datos del usuario", Toast.LENGTH_SHORT).show();
@@ -136,13 +149,13 @@ public class Perfilusuario extends AppCompatActivity {
     private void actualizarPerfil() {
         String nombre = et_nombre.getText().toString();
         String apellido = et_apellido.getText().toString();
-        String direccion = et_direccion.getText().toString();
+        String direccion = et_direccion.getText().toString(); // Aquí se toma correctamente la dirección
         String numeroCasa = et_numeroCasa.getText().toString();
         String comuna = et_comuna.getText().toString();
         String region = et_region.getText().toString();
         String telefono = et_telefono.getText().toString();
         String correo = et_correo.getText().toString();
-        String specilization = Espelizacion.getText().toString(); // Corregido el nombre del campo
+        String specilization = Espelizacion.getText().toString(); // Aquí se toma correctamente la especialización
 
         // Validar que todos los campos estén completos
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(direccion)
@@ -182,8 +195,8 @@ public class Perfilusuario extends AppCompatActivity {
             actualizaciones.put("region", region);
             actualizaciones.put("phone", telefono);
             actualizaciones.put("mail", correo);
-            actualizaciones.put("specilization", specilization);
-            actualizaciones.put("userType", tipoUsuario); // Guardar el valor del tipo de usuario seleccionado
+            actualizaciones.put("specialization", specilization); // Nombre de clave corregido
+            actualizaciones.put("userType", tipoUsuario);
 
             // Actualizar los campos específicos en la base de datos de Firebase sin agregar duplicados
             databaseReference.updateChildren(actualizaciones)
@@ -193,6 +206,7 @@ public class Perfilusuario extends AppCompatActivity {
             Toast.makeText(Perfilusuario.this, "Error: Usuario no autenticado", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
 

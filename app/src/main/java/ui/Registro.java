@@ -185,7 +185,7 @@ public class Registro extends AppCompatActivity {
         String nombre = et_nombre.getText().toString().trim();
         String apellido = et_apellido.getText().toString().trim();
         String rut = et_rut.getText().toString().trim();
-        String direccion = tv_direccion.getText().toString().trim(); // Corregido si es un campo editable
+        String direccion = tv_direccion.getText().toString().trim(); // Asegúrate de que sea la dirección
         String numeroCasa = et_numeroCasa.getText().toString().trim();
         String comuna = et_comuna.getText().toString().trim();
         String region = et_region.getText().toString().trim();
@@ -207,11 +207,11 @@ public class Registro extends AppCompatActivity {
 
         // Asignar valores predeterminados a los campos adicionales
         String userType = "general"; // Valor predeterminado
-        String specialization = "N/A"; // Valor predeterminado
+        String specialization = "N/A"; // Valor predeterminado para especialización
         String user_Type = "N/A"; // ¿Es necesario este campo?
 
         // Crear el objeto User con los campos requeridos
-        User usuario = new User(nombre, apellido, rut, numeroCasa, comuna, region, telefono, correo, specialization, direccion, user_Type);
+        User usuario = new User(nombre, apellido, rut, numeroCasa, comuna, region, telefono, correo,  userType,specialization,direccion); // Fíjate que el campo `street` ahora está correctamente en la posición de `direccion`.
 
         // Inicializar la referencia de la base de datos
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -231,6 +231,7 @@ public class Registro extends AppCompatActivity {
                     Log.e("FirebaseError", "Error al guardar datos: ", e);
                 });
     }
+
 
 }
 
