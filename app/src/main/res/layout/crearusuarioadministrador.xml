@@ -153,37 +153,33 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:padding="15dp">
 
-                    <LinearLayout
+                    <RadioButton
+                        android:id="@+id/rb_administrador"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:text="Administrador"
+                        android:textColor="#000000"
+                        android:background="#808080"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        android:layout_marginEnd="16dp"
+                        android:buttonTint="#000000"/>
 
-                        <RadioButton
-                            android:id="@+id/rb_administrador"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Administrador"
-                            android:background="#808080"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:textStyle="italic"
-                            android:layout_marginEnd="16dp" />
-
-                        <RadioButton
-                            android:id="@+id/rb_usuario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Usuario"
-                            android:background="#808080"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            android:textStyle="italic"
-                            android:layout_marginEnd="16dp"/>
-                    </LinearLayout>
+                    <RadioButton
+                        android:id="@+id/rb_usuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Usuario"
+                        android:textColor="#000000"
+                        android:background="#808080"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        android:buttonTint="#000000"/>
                 </RadioGroup>
+
 
                 <Button
                     android:id="@+id/btn_crear"

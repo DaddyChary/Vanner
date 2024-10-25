@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import activities.MainActivity;
+import activities.MenuAdmin;
 import activities.OlvidarPass;
 
 public class Login extends AppCompatActivity {
@@ -106,20 +107,22 @@ public class Login extends AppCompatActivity {
                                         if (dataSnapshot.exists()) {
                                             // Obtener el tipo de usuario
                                             String tipoUsuario = dataSnapshot.child("userType").getValue(String.class);
+                                            Intent intent;
 
                                             if (tipoUsuario != null && tipoUsuario.equals("admin")) {
                                                 // Mensaje para admin
                                                 Toast.makeText(Login.this, "Bienvenido Admin", Toast.LENGTH_SHORT).show();
+                                                intent = new Intent(Login.this, MenuAdmin.class);
                                             } else {
                                                 // Mensaje para cualquier otro tipo de usuario
                                                 Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
+                                                intent = new Intent(Login.this, Perfilusuario.class);
                                             }
 
                                             // Iniciar la actividad de perfil y pasar el UID del usuario
-                                            Intent intent = new Intent(Login.this, Perfilusuario.class);
                                             intent.putExtra("userId", userId); // Pasar UID del usuario
                                             startActivity(intent);
-                                            finish();
+                                            finish(); // Finaliza la actividad actual después de iniciar la nueva
                                         } else {
                                             Toast.makeText(Login.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
                                         }
