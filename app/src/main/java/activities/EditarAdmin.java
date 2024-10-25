@@ -64,14 +64,12 @@ public class EditarAdmin extends AppCompatActivity {
         String telefono = et_telefono.getText().toString().trim();
         String correo = et_correo.getText().toString().trim();
 
-        // Validación de campos vacíos
         if (nombre.isEmpty() || apellido.isEmpty() || rut.isEmpty() || direccion.isEmpty() ||
                 numeroCasa.isEmpty() || comuna.isEmpty() || region.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
             Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Validación del tipo de usuario
         int selectedId = rg_tipo_usuario.getCheckedRadioButtonId();
         if (selectedId == -1) {
             Toast.makeText(this, "Por favor, selecciona un tipo de usuario.", Toast.LENGTH_SHORT).show();

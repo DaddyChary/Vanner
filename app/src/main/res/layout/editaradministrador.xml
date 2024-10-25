@@ -10,6 +10,27 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
+        <EditText
+            android:id="@+id/et_correo_buscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el Correo"
+            android:textColor="#ffffff"
+            android:background="#808080"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:padding="8dp"
+            android:layout_margin="10dp" />
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Buscar"
+            android:layout_marginBottom="20dp"
+            android:textColor="#000000"
+            android:backgroundTint="#808080"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
         <TextView
             android:layout_width="match_parent"
