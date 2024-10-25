@@ -27,7 +27,7 @@ public class Registro extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private EditText emailRegister, passwordRegister, confirmPasswordRegister, et_nombre, et_apellido, et_rut, tv_direccion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo;
+    private EditText emailRegister, passwordRegister, confirmPasswordRegister, et_nombre, et_apellido, et_rut, tv_direccion, et_numeroCasa, et_comuna, et_region, et_telefono;
     private Button buttonRegister, backButtonRegister;
 
     @Override
@@ -53,7 +53,6 @@ public class Registro extends AppCompatActivity {
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
-        et_correo = findViewById(R.id.et_correo);
         emailRegister = findViewById(R.id.emailRegister);
         passwordRegister = findViewById(R.id.passwordRegister);
         confirmPasswordRegister = findViewById(R.id.confirmPasswordRegister);
@@ -85,17 +84,17 @@ public class Registro extends AppCompatActivity {
                 String comuna = et_comuna.getText().toString();
                 String region = et_region.getText().toString();
                 String telefono = et_telefono.getText().toString();
-                String correo = et_correo.getText().toString();
+
 
                 // Llamar a la función guardarUsuario
-                guardarUsuario(email, password, confirmPassword, nombre, apellido, rut, direccion, numeroCasa, comuna, region, telefono, correo);
+                guardarUsuario(email, password, confirmPassword, nombre, apellido, rut, direccion, numeroCasa, comuna, region, telefono);
 
             }
         });
     }
 
     // Función para guardar el usuario
-    private void guardarUsuario(String email, String password, String confirmPassword, String nombre, String apellido, String rut, String direccion, String numeroCasa, String comuna, String region, String telefono, String correo) {
+    private void guardarUsuario(String email, String password, String confirmPassword, String nombre, String apellido, String rut, String direccion, String numeroCasa, String comuna, String region, String telefono) {
 
         // Validar campos obligatorios
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
@@ -186,12 +185,12 @@ public class Registro extends AppCompatActivity {
         String nombre = et_nombre.getText().toString().trim();
         String apellido = et_apellido.getText().toString().trim();
         String rut = et_rut.getText().toString().trim();
-        String direccion = tv_direccion.getText().toString().trim();
+        String direccion = tv_direccion.getText().toString().trim(); // Corregido si es un campo editable
         String numeroCasa = et_numeroCasa.getText().toString().trim();
         String comuna = et_comuna.getText().toString().trim();
         String region = et_region.getText().toString().trim();
         String telefono = et_telefono.getText().toString().trim();
-        String correo = et_correo.getText().toString().trim();
+        String correo = emailRegister.getText().toString().trim(); // Correo correcto
 
         // Validar que todos los campos requeridos no estén vacíos
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(rut) ||
@@ -203,13 +202,16 @@ public class Registro extends AppCompatActivity {
             return;
         }
 
+        // Log para verificar que los valores no estén vacíos
+        Log.d("Registro", "Datos a guardar: " + nombre + ", " + apellido + ", " + rut + ", " + direccion);
+
         // Asignar valores predeterminados a los campos adicionales
         String userType = "general"; // Valor predeterminado
         String specialization = "N/A"; // Valor predeterminado
+        String user_Type = "N/A"; // ¿Es necesario este campo?
 
         // Crear el objeto User con los campos requeridos
-        User usuario = new User(nombre, apellido, rut, numeroCasa, comuna, region, telefono, correo, userType, specialization, direccion);
-
+        User usuario = new User(nombre, apellido, rut, numeroCasa, comuna, region, telefono, correo, specialization, direccion, user_Type);
 
         // Inicializar la referencia de la base de datos
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -229,7 +231,9 @@ public class Registro extends AppCompatActivity {
                     Log.e("FirebaseError", "Error al guardar datos: ", e);
                 });
     }
+
 }
+
 
 
 

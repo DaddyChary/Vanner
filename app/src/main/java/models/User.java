@@ -1,23 +1,24 @@
 package models;
 
 public class User {
-        private String name;
-        private String lastName;
-        private String rut;
-        private String nHome;
-        private String commune;
-        private String region;
-        private String phone;
-        private String mail;
-        private String street;
-        private String userType;
-        private String specilization;
+    private String name;
+    private String lastName;
+    private String rut;
+    private String nHome;
+    private String commune;
+    private String region;
+    private String phone;
+    private String mail;
+    private String street;
+    private String user_Type;
+    private String specialization; // Corregido el nombre del atributo
 
+    // Constructor vacío
     public User() {
     }
 
-
-    public User(String name, String lastName, String rut, String nHome, String commune, String region, String phone, String mail, String userType, String specilization,String street) {
+    // Constructor con todos los parámetros
+    public User(String name, String lastName, String rut, String nHome, String commune, String region, String phone, String mail, String user_Type, String specialization, String street) {
         this.name = name;
         this.lastName = lastName;
         this.rut = rut;
@@ -26,15 +27,12 @@ public class User {
         this.region = region;
         this.phone = phone;
         this.mail = mail;
-        this.userType = userType;
-        this.specilization = specilization;
+        this.user_Type = user_Type;
+        this.specialization = specialization; // Corregido el nombre del atributo
         this.street = street;
     }
 
-    public User(String userId, String nombre, String apellido, String direccion, String numeroCasa, String comuna, String region, String telefono, String correo) {
-    }
-
-
+    // Getters y Setters
     public String getName() {
         return name;
     }
@@ -100,19 +98,19 @@ public class User {
     }
 
     public String getUserType() {
-        return userType;
+        return user_Type;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setUserType(String user_Type) {
+        this.user_Type = user_Type;
     }
 
-    public String getSpecilization() {
-        return specilization;
+    public String getSpecialization() { // Corregido el nombre del getter
+        return specialization;
     }
 
-    public void setSpecilization(String specilization) {
-        this.specilization = specilization;
+    public void setSpecialization(String specialization) { // Corregido el setter
+        this.specialization = specialization;
     }
 
     public String getStreet() {
@@ -135,8 +133,9 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", mail='" + mail + '\'' +
                 ", street='" + street + '\'' +
-                ", userType='" + userType + '\'' +
-                ", specilization='" + specilization + '\'' +
+                ", user_Type='" + user_Type + '\'' +
+                ", specialization='" + specialization + '\'' + // Corregido el nombre en el toString
                 '}';
     }
 }
+

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +32,10 @@ import models.User;
 public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit, btn_delete, btn_logout;
-    private EditText et_nombre, et_apellido, et_Rut,et_direccion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo;
-//    private TextView ;
+    private EditText et_nombre, et_apellido, et_Rut,et_direccion, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo,Espelizacion;
+    private RadioButton rbEntrenadores,rbTecnicos,rbEmpresas;
     private DatabaseReference databaseReference;
+    private RadioGroup rgGrupoEntrenadores;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +43,10 @@ public class Perfilusuario extends AppCompatActivity {
         setContentView(R.layout.perfilusuario);
 
         // Inicializar elementos de la interfaz
+        rbEmpresas = findViewById(R.id.rbEmpresas);
+        rbEntrenadores = findViewById(R.id.rbEntrenadores);
+        rbTecnicos = findViewById(R.id.rbTecnicos);
+        rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores); // El RadioGroup
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);
         btn_logout = findViewById(R.id.btn_logout);
@@ -52,6 +59,7 @@ public class Perfilusuario extends AppCompatActivity {
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
         et_correo = findViewById(R.id.et_correo);
+        Espelizacion = findViewById(R.id.Espelizacion);
 
         // Obtener el UID del usuario pasado desde la actividad de login
         String userId = getIntent().getStringExtra("userId");
@@ -59,7 +67,7 @@ public class Perfilusuario extends AppCompatActivity {
         // Inicializar la referencia a la base de datos
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        // Cargar los datos del usuario
+        // Cargar los datos del usuario si se pasó un userId
         if (userId != null) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             cargarDatosUsuario(user);
@@ -78,6 +86,7 @@ public class Perfilusuario extends AppCompatActivity {
             finish();
         });
     }
+
 
     // Método para cargar los datos del usuario desde Firebase
     private void cargarDatosUsuario(FirebaseUser user) {
@@ -127,20 +136,33 @@ public class Perfilusuario extends AppCompatActivity {
     private void actualizarPerfil() {
         String nombre = et_nombre.getText().toString();
         String apellido = et_apellido.getText().toString();
-        String direccion = et_direccion.getText().toString(); // Cambio de tv_direccion a et_direccion
+        String direccion = et_direccion.getText().toString();
         String numeroCasa = et_numeroCasa.getText().toString();
         String comuna = et_comuna.getText().toString();
         String region = et_region.getText().toString();
         String telefono = et_telefono.getText().toString();
         String correo = et_correo.getText().toString();
+        String specilization = Espelizacion.getText().toString(); // Corregido el nombre del campo
 
         // Validar que todos los campos estén completos
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(direccion)
                 || TextUtils.isEmpty(numeroCasa) || TextUtils.isEmpty(comuna)
                 || TextUtils.isEmpty(region) || TextUtils.isEmpty(telefono)
-                || TextUtils.isEmpty(correo)) {
+                || TextUtils.isEmpty(correo) || TextUtils.isEmpty(specilization)) {
             Toast.makeText(Perfilusuario.this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        // Obtener el valor del RadioButton seleccionado en el RadioGroup
+        String tipoUsuario = "";
+        int radioId = rgGrupoEntrenadores.getCheckedRadioButtonId();
+
+        if (radioId == rbEntrenadores.getId()) {
+            tipoUsuario = "entrenador";
+        } else if (radioId == rbTecnicos.getId()) {
+            tipoUsuario = "técnico";
+        } else if (radioId == rbEmpresas.getId()) {
+            tipoUsuario = "empresa";
         }
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -152,16 +174,18 @@ public class Perfilusuario extends AppCompatActivity {
 
             // Crear un mapa con los nuevos datos para actualizar
             Map<String, Object> actualizaciones = new HashMap<>();
-            actualizaciones.put("name", nombre); // Cambiado a "name"
-            actualizaciones.put("lastName", apellido); // Cambiado a "lastName"
-            actualizaciones.put("street", direccion); // Cambiado a "street"
-            actualizaciones.put("nHome", numeroCasa); // Cambiado a "nHome"
-            actualizaciones.put("commune", comuna); // Cambiado a "commune"
-            actualizaciones.put("region", region); // Sin cambio, ya que coincide
-            actualizaciones.put("phone", telefono); // Cambiado a "phone"
-            actualizaciones.put("mail", correo); // Cambiado a "mail"
+            actualizaciones.put("name", nombre);
+            actualizaciones.put("lastName", apellido);
+            actualizaciones.put("street", direccion);
+            actualizaciones.put("nHome", numeroCasa);
+            actualizaciones.put("commune", comuna);
+            actualizaciones.put("region", region);
+            actualizaciones.put("phone", telefono);
+            actualizaciones.put("mail", correo);
+            actualizaciones.put("specilization", specilization);
+            actualizaciones.put("userType", tipoUsuario); // Guardar el valor del tipo de usuario seleccionado
 
-            // Actualizar los campos específicos en la base de datos de Firebase sin eliminar el resto
+            // Actualizar los campos específicos en la base de datos de Firebase sin agregar duplicados
             databaseReference.updateChildren(actualizaciones)
                     .addOnSuccessListener(aVoid -> Toast.makeText(Perfilusuario.this, "Perfil actualizado", Toast.LENGTH_SHORT).show())
                     .addOnFailureListener(e -> Toast.makeText(Perfilusuario.this, "Error al actualizar el perfil", Toast.LENGTH_SHORT).show());
@@ -169,6 +193,7 @@ public class Perfilusuario extends AppCompatActivity {
             Toast.makeText(Perfilusuario.this, "Error: Usuario no autenticado", Toast.LENGTH_SHORT).show();
         }
     }
+
 
 
     // Método para eliminar el perfil del usuario
