@@ -8,25 +8,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Vanner"
-            android:textSize="54sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginTop="55dp"
             android:textColor="#000000"
-            android:padding="8dp"
+            android:padding="5dp"
             android:layout_marginBottom="16dp"
-            android:layout_gravity="center"
-            android:background="@android:color/darker_gray"/>
-
+            android:background="@android:color/darker_gray" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fillViewport="true">
 
             <LinearLayout
@@ -124,22 +125,74 @@
                     android:padding="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp" />
-                <Button
+
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <RadioButton
+                            android:id="@+id/rb_administrador"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Administrador"
+                            android:background="#808080"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="italic"
+                            android:layout_marginEnd="16dp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_usuario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Usuario"
+                            android:background="#808080"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            android:textStyle="italic"
+                            android:layout_marginEnd="16dp"/>
+                    </LinearLayout>
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btn_editar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Editar"
                     android:textColor="#000000"
                     android:backgroundTint="#808080"
                     android:textSize="20sp"
                     android:textStyle="italic"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="16dp" />
 
-                </Button>
-
+                <Button
+                    android:id="@+id/btn_volver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Volver"
+                    android:textColor="#000000"
+                    android:backgroundTint="#808080"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:layout_marginBottom="16dp" />
             </LinearLayout>
-
         </ScrollView>
 
-    </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#808080"
+            android:padding="12dp"
+            android:stretchColumns="1" />
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@
             android:text="Vanner"
             android:textColor="#000000"
             android:textSize="30sp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="15dp"
             android:textStyle="bold" />
 
         <EditText
@@ -132,9 +132,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar"
-            android:layout_marginBottom="16dp"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="26dp"
             android:backgroundTint="#808080"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="italic" />
 
@@ -143,9 +144,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Volver"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="26dp"
             android:layout_gravity="center"
             android:backgroundTint="#808080"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="italic" />
 
