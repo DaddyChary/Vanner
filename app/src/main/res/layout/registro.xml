@@ -115,7 +115,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Calle"
+                    android:hint="Ejemplo: Calle 123"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -136,7 +136,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Número de casa o departamento"
+                    android:hint="Ejemplo:1080"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -157,7 +157,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Comuna"
+                    android:hint="Ejemplo:Rancagua"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -178,7 +178,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Región"
+                    android:hint="Ejemplo:Valparaíso"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -199,7 +199,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Teléfono"
+                    android:hint="Ejemplo:+56912345678"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -221,7 +221,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email@gmail.cl"
+                    android:hint="Ejemplo:Email@ejemplo.com"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
