@@ -1,50 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        app:boxBackgroundColor="#808080">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextBuscar"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Buscar..."
             android:padding="10dp"
-            android:textColor="#000000"
-            android:background="#808080"
+            android:textColor="#FFFF00"
             android:textSize="20sp"
-            android:textStyle="italic"
-            android:layout_weight="1" />
+            android:textStyle="italic" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/buttonBuscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buscar"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:backgroundTint="#808080"
-            android:textColor="#000000"
-            android:layout_marginStart="8dp" />
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:backgroundTint="#808080"
+        android:textColor="#FFFF00"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#808080"
+        app:backgroundTint="#808080"
         android:text="Volver"
-        android:textColor="#000000"
+        android:textColor="#FFFF00"
         android:textSize="20sp"
         android:textStyle="italic"
         android:layout_gravity="center"/>

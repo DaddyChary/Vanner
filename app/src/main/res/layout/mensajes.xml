@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/fondo1">
+    android:background="@drawable/fondo1"> <!-- Imagen de fondo -->
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mensajes"
-        android:textSize="60sp"
+        android:textSize="45sp"
         android:textStyle="bold"
-        android:textColor="#000000"
-        android:background="#808080"
+        android:textColor="#FFFF00"
         android:gravity="center"
         android:layout_gravity="center"
         android:layout_marginTop="180dp"/>
@@ -32,18 +32,22 @@
             android:src="@drawable/perfilusuario"
             android:layout_gravity="center"/>
 
-        <EditText
-            android:id="@+id/et_message"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Enviar Mensaje"
-            android:padding="10dp"
             android:layout_marginStart="8dp"
-            android:textColor="#ffffff"
-            android:background="#808080"
-            android:textSize="16sp"/>
+            app:boxBackgroundColor="#808080">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enviar Mensaje"
+                android:padding="10dp"
+                android:textColor="#FFFF00"
+                android:textSize="16sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -59,28 +63,32 @@
             android:src="@drawable/perfilusuario"
             android:layout_gravity="center"/>
 
-        <EditText
-            android:id="@+id/et_message2"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Enviar Mensaje"
-            android:padding="10dp"
             android:layout_marginStart="8dp"
-            android:textColor="#ffffff"
-            android:background="#808080"
-            android:textSize="16sp"/>
+            app:boxBackgroundColor="#808080">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_message2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enviar Mensaje"
+                android:padding="10dp"
+                android:textColor="#FFFF00"
+                android:textSize="16sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Retroceder"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="#000000"
-        android:backgroundTint="#808080"
+        app:backgroundTint="#FFFF00"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"/>
 

@@ -1,61 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
-    android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Vanner"
-        android:textColor="#000000"
-        android:background="#808080"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
-
-
-    <EditText
-        android:id="@+id/emailLoginRecuperar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="E-mail"
-        android:layout_margin="15dp"
-        android:textColor="#000000"
-        android:background="#808080"
-        android:shadowColor="#ffffff"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <Button
-        android:id="@+id/recuperarPassButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recuperar"
-        android:textSize="25sp"
-        android:textStyle="italic"
-        android:textColor="#000000"
-        android:backgroundTint="#808080"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:padding="16dp"/>
+        <!-- Título -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Vanner"
+            android:textColor="#ffff00"
+            android:background="#808080"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
 
-    <Button
-        android:id="@+id/backButtonOlvidarPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:textSize="25sp"
-        android:textStyle="italic"
-        android:textColor="#000000"
-        android:backgroundTint="#808080"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:padding="16dp"/>
-</LinearLayout>
+        <!-- Campo E-mail -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailLoginRecuperar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:textColor="#000000"
+                android:textColorHint="#ffffff"
+                android:padding="12dp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón Recuperar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/recuperarPassButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recuperar"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:textColor="#ffff00"
+            android:backgroundTint="#808080"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:padding="16dp" />
+
+        <!-- Botón Volver -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backButtonOlvidarPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textSize="25sp"
+            android:textStyle="italic"
+            android:textColor="#ffff00"
+            android:backgroundTint="#808080"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:padding="16dp" />
+    </LinearLayout>
+</ScrollView>

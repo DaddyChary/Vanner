@@ -5,27 +5,29 @@
     android:background="@drawable/fondo1"
     android:padding="16dp">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="180dp"
         android:gravity="center"
         android:padding="16dp"
         android:text="Vanner"
-        android:textColor="#000000"
-        android:background="#808080"
+        android:textColor="#FFFF00"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:backgroundTint="#808080" />
+
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:textSize="25sp"
+        android:layout_margin="16dp"
         android:textColor="#000000"
-        android:backgroundTint="#808080"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
         android:textStyle="italic"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
@@ -36,9 +38,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registrar"
-        android:textSize="25sp"
+        android:layout_margin="16dp"
         android:textColor="#000000"
-        android:backgroundTint="#808080"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
         android:textStyle="italic"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"

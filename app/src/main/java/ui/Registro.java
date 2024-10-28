@@ -48,7 +48,7 @@ public class Registro extends AppCompatActivity {
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_rut = findViewById(R.id.et_Rut);
-        tv_direccion = findViewById(R.id.tv_direccion);  // Mantengo tv_direccion
+        //tv_direccion = findViewById(R.id.tv_direccion);  // Mantengo tv_direccion
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
