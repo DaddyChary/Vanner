@@ -53,7 +53,7 @@ public class Perfilusuario extends AppCompatActivity {
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_Rut = findViewById(R.id.et_Rut);
-        et_direccion = findViewById(R.id.et_direccion);
+        //et_direccion = findViewById(R.id.et_direccion);
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);

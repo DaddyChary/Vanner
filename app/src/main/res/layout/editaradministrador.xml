@@ -13,32 +13,41 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+        <!-- Título -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"/>
+            android:layout_marginTop="170dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Vanner"
+            android:textColor="#ffff00"
+            android:background="#808080"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
+        <!-- Correo Input -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="4dp"
             android:text="Correo"
-            android:textColor="#000000"
-            android:textSize="25dp"/>
+            android:textColor="#ffffff"
+            android:textSize="25sp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el Correo"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_correo_buscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese el Correo"
-                android:layout_marginBottom="8dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_correo_buscar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnBuscar"
@@ -52,18 +61,7 @@
             android:textSize="20sp"
             android:textStyle="italic" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Vanner"
-            android:textColor="#FFFF00"
-            android:textSize="30sp"
-            android:layout_marginBottom="15dp"
-            android:textStyle="bold" />
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -76,11 +74,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
 
                 <!-- Campo Nombre -->
                 <TextView
@@ -121,8 +114,7 @@
                         android:id="@+id/et_apellido"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF"
-                        />
+                        android:textColor="#FFFFFF" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Rut -->
@@ -267,13 +259,14 @@
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/emailRegister"
+                        android:id="@+id/et_correo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#FFFFFF"
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Tipo Usuario Radio Group -->
                 <RadioGroup
                     android:id="@+id/rg_tipo_usuario"
                     android:layout_width="match_parent"
@@ -296,11 +289,9 @@
                         android:textColor="#FFFF00"
                         android:buttonTint="#FFFF00"
                         android:layout_marginStart="16dp" />
-
-
                 </RadioGroup>
 
-
+                <!-- Editar Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_editar"
                     android:layout_width="match_parent"
@@ -313,6 +304,7 @@
                     android:textSize="20sp"
                     android:textStyle="italic" />
 
+                <!-- Volver Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_volver"
                     android:layout_width="match_parent"
@@ -327,6 +319,7 @@
             </LinearLayout>
         </ScrollView>
 
+        <!-- Table Layout -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

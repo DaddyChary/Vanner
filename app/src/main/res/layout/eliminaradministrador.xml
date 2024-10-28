@@ -30,43 +30,55 @@
         app:boxCornerRadiusTopStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
-        app:boxCornerRadiusBottomEnd="8dp">
+        app:boxCornerRadiusBottomEnd="8dp"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_correo"
+        <!-- Campo Correo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correo"
+            android:textColor="#FFFF00"
+            android:layout_marginBottom="4dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:textColor="#FFFF00"
-            android:textColorHint="#ffffff"
-            android:backgroundTint="#808080"
-            android:padding="12dp"
-            android:textStyle="bold"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:hint="Ingrese su Correo"
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Buscar"
+        android:layout_margin="16dp"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
         android:layout_marginBottom="20dp"
-        android:textColor="#FFFF00"
-        android:textColorHint="#ffffff"
-        android:backgroundTint="#808080"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        android:padding="12dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnVolver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Volver"
+        android:layout_margin="16dp"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
         android:layout_marginBottom="20dp"
-        android:textColor="#FFFF00"
-        android:textColorHint="#ffffff"
-        android:backgroundTint="#808080"
-        android:padding="12dp"
-        android:textStyle="bold" />
+        android:padding="12dp"/>
 
     <TableLayout
         android:id="@+id/tableUsuarios"
