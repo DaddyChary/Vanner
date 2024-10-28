@@ -35,7 +35,7 @@
                 android:id="@+id/emailLoginRecuperar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail"
+                android:hint="E-mail@gmail.com"
                 android:textColor="#000000"
                 android:textColorHint="#ffffff"
                 android:padding="12dp"
