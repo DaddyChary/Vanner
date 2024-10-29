@@ -35,16 +35,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Editar"
-                    android:textColor="#FFFF00"
-                    app:backgroundTint="#000000" />
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFD700" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Eliminar"
-                    android:textColor="#FFFF00"
-                    app:backgroundTint="#000000"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFD700"
                     android:layout_marginTop="8dp" />
 
                 <com.google.android.material.button.MaterialButton
@@ -52,8 +52,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Salir de Perfil"
-                    android:textColor="#FFFF00"
-                    app:backgroundTint="#000000"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFD700"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
         </LinearLayout>
@@ -62,9 +62,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Datos del perfil"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:textSize="20sp"
-            android:textColor="#FFFF00"
+            android:textColor="#FFD700"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
@@ -81,209 +81,152 @@
                 android:padding="16dp">
 
                 <!-- Campo Nombre -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_nombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Apellido -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Apellido"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Apellido"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_apellido"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Rut -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rut"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Rut"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_Rut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Calle -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Calle"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Calle"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_calle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Número de Casa o Departamento -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Número de casa o departamento"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Número de casa o departamento"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_numeroCasa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Comuna -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comuna"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Comuna"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_comuna"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Región -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Región"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Región"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_region"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Teléfono -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Teléfono"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Teléfono"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_telefono"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Campo Correo Electrónico -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Correo Electrónico"
-                    android:textColor="#FFFF00"
-                    android:layout_marginBottom="4dp"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Correo Electrónico"
+                    android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#FFFFFF" />
+                        android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <!-- Entrenadores -->
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Entrenadores"
-                    android:textColor="#FFFF00"
+                    android:textColor="#FFD700"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:layout_marginTop="16dp" />
 
                 <!-- Grupo de RadioButtons -->
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Género"
-                    android:textColor="#FFFF00"
-                    android:layout_marginTop="16dp" />
-
                 <RadioGroup
                     android:id="@+id/rgGrupoEntrenadores"
                     android:layout_width="match_parent"
@@ -295,16 +238,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Entrenadores"
-                        android:textColor="#FFFF00"
-                        android:buttonTint="#FFFF00" />
+                        android:textColor="#d0d3d4"
+                        android:buttonTint="#FFD700" />
 
                     <RadioButton
                         android:id="@+id/rbTecnicos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Técnicos"
-                        android:textColor="#FFFF00"
-                        android:buttonTint="#FFFF00"
+                        android:textColor="#d0d3d4"
+                        android:buttonTint="#FFD700"
                         android:layout_marginStart="16dp" />
 
                     <RadioButton
@@ -312,8 +255,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Empresas"
-                        android:textColor="#FFFF00"
-                        android:buttonTint="#FFFF00"
+                        android:textColor="#d0d3d4"
+                        android:buttonTint="#FFD700"
                         android:layout_marginStart="16dp" />
                 </RadioGroup>
 
@@ -321,24 +264,23 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Espelizacion"
-                    android:textColor="#FFFF00"
+                    android:text="Especialización"
+                    android:textColor="#FFD700"
                     android:layout_marginTop="16dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    app:boxBackgroundColor="#000000"
-                    app:boxStrokeColor="#FFFF00">
+                    app:boxStrokeColor="#FFD700"
+                    android:textColorHint="#d0d3d4">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Espelizacion"
+                        android:id="@+id/Especialización"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Ingrese su Espelizacion"
-                        android:textColor="#FFFF00"
-                        android:textColorHint="#888888" />
+                        android:hint="Ingrese su Especialización"
+                        android:textColor="#FFD700"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Botón Regresar -->
@@ -346,6 +288,7 @@
                     android:id="@+id/btn_back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="Regresar"
                     android:textColor="#000000"
                     android:backgroundTint="#FFD700"
