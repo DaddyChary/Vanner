@@ -27,7 +27,7 @@ public class Registro extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-    private EditText emailRegister, passwordRegister, confirmPasswordRegister, et_nombre, et_apellido, et_rut, tv_direccion, et_numeroCasa, et_comuna, et_region, et_telefono;
+    private EditText emailRegister, passwordRegister, confirmPasswordRegister, et_nombre, et_apellido, et_rut, et_calle, et_numeroCasa, et_comuna, et_region, et_telefono;
     private Button buttonRegister, backButtonRegister;
 
     @Override
@@ -48,7 +48,7 @@ public class Registro extends AppCompatActivity {
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_rut = findViewById(R.id.et_Rut);
-        //tv_direccion = findViewById(R.id.tv_direccion);  // Mantengo tv_direccion
+        et_calle = findViewById(R.id.et_calle);  // Mantengo tv_direccion
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
@@ -79,7 +79,7 @@ public class Registro extends AppCompatActivity {
                 String nombre = et_nombre.getText().toString();
                 String apellido = et_apellido.getText().toString();
                 String rut = et_rut.getText().toString();
-                String direccion = tv_direccion.getText().toString(); // Uso tv_direccion como dirección
+                String direccion = et_calle.getText().toString(); // Uso tv_direccion como dirección
                 String numeroCasa = et_numeroCasa.getText().toString();
                 String comuna = et_comuna.getText().toString();
                 String region = et_region.getText().toString();
@@ -185,7 +185,7 @@ public class Registro extends AppCompatActivity {
         String nombre = et_nombre.getText().toString().trim();
         String apellido = et_apellido.getText().toString().trim();
         String rut = et_rut.getText().toString().trim();
-        String direccion = tv_direccion.getText().toString().trim(); // Asegúrate de que sea la dirección
+        String direccion = et_calle.getText().toString().trim(); // Asegúrate de que sea la dirección
         String numeroCasa = et_numeroCasa.getText().toString().trim();
         String comuna = et_comuna.getText().toString().trim();
         String region = et_region.getText().toString().trim();
@@ -231,8 +231,6 @@ public class Registro extends AppCompatActivity {
                     Log.e("FirebaseError", "Error al guardar datos: ", e);
                 });
     }
-
-
 }
 
 

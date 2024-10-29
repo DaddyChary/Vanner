@@ -285,10 +285,10 @@
                         android:id="@+id/rbTecnicos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Usuario"
-                        android:textColor="#FFFF00"
+                        android:layout_marginStart="16dp"
                         android:buttonTint="#FFFF00"
-                        android:layout_marginStart="16dp" />
+                        android:text="Usuario"
+                        android:textColor="#FFFF00" />
                 </RadioGroup>
 
                 <!-- Editar Button -->
