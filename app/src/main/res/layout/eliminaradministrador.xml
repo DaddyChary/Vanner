@@ -34,10 +34,10 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBuscar"
+        android:id="@+id/btnEliminarAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buscar"
+        android:text="Eliminar"
         android:layout_margin="16dp"
         android:textColor="#000000"
         android:backgroundTint="#FFD700"

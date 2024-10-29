@@ -218,17 +218,11 @@
                         android:id="@+id/rbTecnicos"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-<<<<<<< HEAD
-                        android:layout_marginStart="16dp"
-                        android:buttonTint="#FFFF00"
-                        android:text="Usuario"
-                        android:textColor="#FFFF00" />
-=======
                         android:text="Usuario"
                         android:textColor="#d0d3d4"
                         android:buttonTint="#FFD700"
                         android:layout_marginStart="16dp" />
->>>>>>> 915e72c17086861fe0389cbf68742104e22cfd8d
+
                 </RadioGroup>
 
                 <!-- Editar Button -->
