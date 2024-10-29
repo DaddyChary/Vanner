@@ -6,38 +6,37 @@
     android:background="@drawable/fondo1"
     android:orientation="vertical">
 
+    <!-- Título -->
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
-        android:padding="16dp"
-        android:text="Vanner"
-        android:textColor="#FFFF00"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:backgroundTint="#808080" />
+        android:background="@drawable/logoimg"
+        android:layout_gravity="center" />
 
     <!-- Campo Correo -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Correo"
-        android:textColor="#FFFF00"
-        android:layout_marginBottom="4dp"/>
+        android:textColor="#FFD700"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_margin="16dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ejemplo:Email@ejemplo.com"
-        android:layout_marginBottom="8dp">
+        android:textColorHint="#d0d3d4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFD700"
+            android:layout_margin="16dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Campo Contraseña -->
@@ -45,21 +44,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contraseña"
-        android:textColor="#FFFF00"
-        android:layout_marginBottom="4dp"/>
+        android:textColor="#FFD700"
+        android:layout_margin="16dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ejemplo: 123456"
-        android:layout_marginBottom="8dp">
+        android:textColorHint="#d0d3d4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:inputType="textPassword" /> <!-- Agregando el tipo de entrada para contraseñas -->
+            android:textColor="#FFD700"
+            android:inputType="textPassword"
+            android:layout_margin="16dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -68,6 +68,8 @@
         android:layout_height="wrap_content"
         android:text="Acceder"
         android:layout_margin="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
         android:textColor="#000000"
         android:backgroundTint="#FFD700"
         android:textSize="20sp"
@@ -77,9 +79,8 @@
         android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#FFFF00"
+        android:textColor="#FFD700"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
         android:padding="8dp"
         android:text="¿Olvidaste tu contraseña?" />
 
@@ -92,6 +93,5 @@
         android:text="Volver"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
         android:textStyle="italic"/>
 </LinearLayout>

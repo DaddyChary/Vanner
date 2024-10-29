@@ -59,7 +59,7 @@ public class Perfilusuario extends AppCompatActivity {
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
         et_correo = findViewById(R.id.et_correo);
-        Espelizacion = findViewById(R.id.Espelizacion);
+        Espelizacion = findViewById(R.id.Especialización);
 
         // Obtener el UID del usuario pasado desde la actividad de login
         String userId = getIntent().getStringExtra("userId");
