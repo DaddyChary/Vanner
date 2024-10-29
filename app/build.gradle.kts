@@ -40,10 +40,14 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
 
-    // Dependencias de Firebase (mantén solo una versión por biblioteca)
-    implementation("com.google.firebase:firebase-auth:22.1.1")
-    implementation("com.google.firebase:firebase-functions:20.1.1")
-    implementation("com.google.firebase:firebase-database:20.0.5")
+    // Firebase BoM para sincronizar versiones de Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+
+    // Dependencias de Firebase (sin versiones específicas)
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-functions")
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-appcheck")
 
     // Dependencias de Google Play Services
     implementation("com.google.android.gms:play-services-auth:20.2.0")

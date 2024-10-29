@@ -256,3 +256,36 @@ public class Perfilusuario extends AppCompatActivity {
     }
 
 }
+//// Validar el RUT chileno
+//private boolean validarRut(String rut) {
+//    rut = rut.replace(".", "").replace("-", "");
+//    if (rut.length() < 2) {
+//        Toast.makeText(Registro.this, "El RUT es demasiado corto", Toast.LENGTH_SHORT).show();
+//        return false;
+//    }
+//
+//    String rutCuerpo = rut.substring(0, rut.length() - 1);
+//    char dv = rut.charAt(rut.length() - 1);
+//
+//    int rutNumero;
+//    try {
+//        rutNumero = Integer.parseInt(rutCuerpo);
+//    } catch (NumberFormatException e) {
+//        Toast.makeText(Registro.this, "El RUT contiene caracteres no válidos", Toast.LENGTH_SHORT).show();
+//        return false;
+//    }
+//
+//    int m = 0, s = 1;
+//    while (rutNumero != 0) {
+//        s = (s + rutNumero % 10 * (9 - m++ % 6)) % 11;
+//        rutNumero /= 10;
+//    }
+//
+//    char dvCalculado = (s > 0) ? (char) (s + 47) : 'K';
+//    if (dvCalculado == dv) {
+//        return true;
+//    } else {
+//        Toast.makeText(Registro.this, "El dígito verificador es incorrecto", Toast.LENGTH_SHORT).show();
+//        return false;
+//    }
+//}
