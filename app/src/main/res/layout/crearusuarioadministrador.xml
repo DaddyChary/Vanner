@@ -216,48 +216,55 @@
                     android:id="@+id/rgGrupoTipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                    <RadioButton
-                        android:id="@+id/rb_administrador"
+                    <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Administrador"
-                        android:textColor="#d0d3d4" />
+                        android:columnCount="2"
+                        android:alignmentMode="alignMargins"
+                        android:rowOrderPreserved="false">
 
-                    <RadioButton
-                        android:id="@+id/rb_usuario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Usuario"
-                        android:textColor="#d0d3d4"
-                        android:layout_marginStart="16dp" />
+                        <RadioButton
+                            android:id="@+id/rb_administrador"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Administrador"
+                            android:textColor="#d0d3d4"
+                            android:gravity="center"
+                            android:layout_marginEnd="8dp"/>
 
+                        <RadioButton
+                            android:id="@+id/rb_usuario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Usuario"
+                            android:textColor="#d0d3d4"
+                            android:gravity="center"
+                            android:layout_marginEnd="8dp"/>
 
+                        <RadioButton
+                            android:id="@+id/rb_empresa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Empresa"
+                            android:textColor="#d0d3d4"
+                            android:gravity="center"
+                            android:layout_marginEnd="8dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rb_entrenador"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Entrenador"
+                            android:textColor="#d0d3d4"
+                            android:gravity="center"
+                            android:layout_marginEnd="8dp"/>
+                    </GridLayout>
                 </RadioGroup>
-                <RadioGroup
-                    android:id="@+id/rgGrupoTipo2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rb_empresa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Empresa"
-                        android:textColor="#d0d3d4" />
-
-                    <RadioButton
-                        android:id="@+id/rb_entrenador"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Entrenador"
-                        android:textColor="#d0d3d4"
-                        android:layout_marginStart="16dp" />
 
 
-                </RadioGroup>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_crear"

@@ -16,80 +16,95 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    
+        <!-- Título Administrador -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Administrador "
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            android:background="#FFD700"
+            android:layout_marginTop="280dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Título Administrador -->
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/titleAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" Administrador "
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        android:background="#FFD700"
-        android:layout_marginTop="280dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Botón Crear -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCrear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREAR"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/titleAdmin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Crear -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnCrear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CREAR"
-        android:textColor="#000000"
-        android:backgroundTint="#FFD700"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/titleAdmin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Botón Editar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDITAR"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnCrear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Editar -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEditar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EDITAR"
-        android:textColor="#000000"
-        android:backgroundTint="#FFD700"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnCrear"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Botón Eliminar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ELIMINAR"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnEditar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Eliminar -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ELIMINAR"
-        android:textColor="#000000"
-        android:backgroundTint="#FFD700"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnEditar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Botón Ver Usuarios -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerUsuarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VER USUARIOS"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/btnEliminar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón Ver Usuarios -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVerUsuarios"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VER USUARIOS"
-        android:textColor="#000000"
-        android:backgroundTint="#FFD700"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/btnEliminar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_volveradministrador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/btnVerUsuarios"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
