@@ -23,6 +23,7 @@
         <activity android:name="activities.OlvidarPass"/>
         <activity android:name="ui.Perfilusuario"/>
         <activity android:name="activities.EliminarAdmin"/>
+        <activity android:name="activities.VerUsuarios"/>
         <activity
             android:name="activities.MainActivity"
             android:exported="true">

@@ -35,6 +35,13 @@ public class MenuAdmin extends AppCompatActivity {
             }
         });
 
+        btnVerUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuAdmin.this, VerUsuarios.class);
+                startActivity(intent);
+            }
+        });
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class EliminarAdmin extends AppCompatActivity {
-    private Button btnBuscar, btnVolver;
+    private Button btnEliminarAdmin, btnVolver;
     private EditText et_correo;
     private DatabaseReference databaseReference;
     private FirebaseAuth auth;
@@ -36,14 +36,14 @@ public class EliminarAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eliminaradministrador);
 
-        btnBuscar = findViewById(R.id.btnBuscar);
+        btnEliminarAdmin = findViewById(R.id.btnEliminarAdmin);
         btnVolver = findViewById(R.id.btnVolver);
         et_correo = findViewById(R.id.et_correo);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
         auth = FirebaseAuth.getInstance();
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
+        btnEliminarAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String correo = et_correo.getText().toString().trim();

@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,14 +35,16 @@ public class EditarAdmin extends AppCompatActivity {
     private RadioButton rb_administrador, rbTecnicos;
     private Button btn_editar, btn_volver, btnBuscar;
     private DatabaseReference databaseReference;
-    private String usuarioId; // Variable para almacenar el ID del usuario
+    private TableLayout tableUsuarios;
+    private String usuarioId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editaradministrador);
 
-        // Inicializa los campos de la interfaz
+        // Inicialización de vistas
+        tableUsuarios = findViewById(R.id.tableUsuarios);
         et_correo_buscar = findViewById(R.id.et_correo_buscar);
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
@@ -52,35 +57,70 @@ public class EditarAdmin extends AppCompatActivity {
         et_correo = findViewById(R.id.et_correo);
         rg_tipo_usuario = findViewById(R.id.rg_tipo_usuario);
         rbTecnicos = findViewById(R.id.rbTecnicos);
-        rb_administrador = findViewById(R.id.rb_administrador); // Asegúrate de que este ID sea correcto
+        rb_administrador = findViewById(R.id.rb_administrador);
         btn_editar = findViewById(R.id.btn_editar);
         btn_volver = findViewById(R.id.btn_volver);
         btnBuscar = findViewById(R.id.btnBuscar);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
 
-        // Configura el botón de búsqueda
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String correoIngresado = et_correo_buscar.getText().toString().trim();
-                cargarUsuarioPorCorreo(correoIngresado);
-            }
-        });
+        // Cargar todos los usuarios en la tabla al iniciar
+        cargarUsuariosEnTabla();
 
-        btn_editar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editarUsuario();
-            }
-        });
+        // Configura el botón de búsqueda y edición
+        btnBuscar.setOnClickListener(view -> cargarUsuarioPorCorreo(et_correo_buscar.getText().toString().trim()));
+        btn_editar.setOnClickListener(view -> editarUsuario());
+        btn_volver.setOnClickListener(view -> volver());
+    }
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+    private void cargarUsuariosEnTabla() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                volver();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tableUsuarios.removeAllViews(); // Limpia la tabla antes de cargar
+
+                for (DataSnapshot usuarioSnapshot : dataSnapshot.getChildren()) {
+                    User usuario = usuarioSnapshot.getValue(User.class);
+                    if (usuario != null) {
+                        TableRow row = new TableRow(EditarAdmin.this);
+                        TextView tvCorreo = new TextView(EditarAdmin.this);
+                        tvCorreo.setText(usuario.getMail());
+                        tvCorreo.setPadding(8, 8, 8, 8);
+                        row.addView(tvCorreo);
+
+                        // Añade la fila a la tabla
+                        tableUsuarios.addView(row);
+
+                        // Configura el listener de clic en cada fila
+                        row.setOnClickListener(v -> cargarDatosUsuarioEnCampos(usuarioSnapshot.getKey(), usuario));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(EditarAdmin.this, "Error al cargar los usuarios: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void cargarDatosUsuarioEnCampos(String id, User usuario) {
+        usuarioId = id;
+        et_nombre.setText(usuario.getName());
+        et_apellido.setText(usuario.getLastName());
+        et_Rut.setText(usuario.getRut());
+        et_calle.setText(usuario.getStreet());
+        et_numeroCasa.setText(usuario.getnHome());
+        et_comuna.setText(usuario.getCommune());
+        et_region.setText(usuario.getRegion());
+        et_telefono.setText(usuario.getPhone());
+        et_correo.setText(usuario.getMail());
+
+        if ("general".equals(usuario.getUserType())) {
+            rg_tipo_usuario.check(R.id.rb_usuario);
+        } else if ("tecnico".equals(usuario.getUserType())) {
+            rg_tipo_usuario.check(R.id.rbTecnicos);
+        }
     }
 
     private void cargarUsuarioPorCorreo(String correo) {
@@ -91,25 +131,8 @@ public class EditarAdmin extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         for (DataSnapshot usuarioSnapshot : dataSnapshot.getChildren()) {
-                            usuarioId = usuarioSnapshot.getKey(); // Guarda el ID del usuario
                             User usuario = usuarioSnapshot.getValue(User.class);
-                            if (usuario != null) {
-                                et_nombre.setText(usuario.getName());
-                                et_apellido.setText(usuario.getLastName());
-                                et_Rut.setText(usuario.getRut());
-                                et_calle.setText(usuario.getStreet());
-                                et_numeroCasa.setText(usuario.getnHome());
-                                et_comuna.setText(usuario.getCommune());
-                                et_region.setText(usuario.getRegion());
-                                et_telefono.setText(usuario.getPhone());
-                                et_correo.setText(usuario.getMail());
-
-                                if ("general".equals(usuario.getUserType())) {
-                                    rg_tipo_usuario.check(R.id.rb_usuario);
-                                } else if ("tecnico".equals(usuario.getUserType())) {
-                                    rg_tipo_usuario.check(R.id.rbTecnicos);
-                                }
-                            }
+                            cargarDatosUsuarioEnCampos(usuarioSnapshot.getKey(), usuario);
                         }
                     } else {
                         Toast.makeText(EditarAdmin.this, "Usuario no encontrado.", Toast.LENGTH_SHORT).show();
@@ -127,8 +150,7 @@ public class EditarAdmin extends AppCompatActivity {
     }
 
     private void editarUsuario() {
-        if (usuarioId != null) { // Asegúrate de que se haya cargado un usuario
-            // Obtén los valores de los campos
+        if (usuarioId != null) {
             String nombre = et_nombre.getText().toString().trim();
             String apellido = et_apellido.getText().toString().trim();
             String rut = et_Rut.getText().toString().trim();
@@ -140,7 +162,6 @@ public class EditarAdmin extends AppCompatActivity {
             String correo = et_correo.getText().toString().trim();
             String tipoUsuario = rg_tipo_usuario.getCheckedRadioButtonId() == R.id.rb_usuario ? "general" : "tecnico";
 
-            // Crea un mapa para actualizar los datos en Firebase
             Map<String, Object> usuarioUpdates = new HashMap<>();
             usuarioUpdates.put("name", nombre);
             usuarioUpdates.put("lastName", apellido);
@@ -153,7 +174,6 @@ public class EditarAdmin extends AppCompatActivity {
             usuarioUpdates.put("mail", correo);
             usuarioUpdates.put("userType", tipoUsuario);
 
-            // Realiza la actualización en Firebase
             databaseReference.child(usuarioId).updateChildren(usuarioUpdates)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
