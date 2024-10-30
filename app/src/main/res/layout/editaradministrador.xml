@@ -252,15 +252,23 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- Table Layout -->
-        <TableLayout
-            android:id="@+id/tableUsuarios"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            android:padding="12dp"
-            android:layout_marginTop="20dp"
-            android:stretchColumns="1" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/tableUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#808080"
+                android:padding="12dp"
+                android:stretchColumns="1">
+
+            </TableLayout>
+
+        </ScrollView>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

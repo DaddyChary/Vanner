@@ -233,6 +233,30 @@
                         android:textColor="#d0d3d4"
                         android:layout_marginStart="16dp" />
 
+
+                </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/rgGrupoTipo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_empresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empresa"
+                        android:textColor="#d0d3d4" />
+
+                    <RadioButton
+                        android:id="@+id/rb_entrenador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Entrenador"
+                        android:textColor="#d0d3d4"
+                        android:layout_marginStart="16dp" />
+
+
                 </RadioGroup>
 
                 <com.google.android.material.button.MaterialButton
@@ -264,12 +288,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#808080"
-            android:padding="12dp"
-            android:stretchColumns="1" />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

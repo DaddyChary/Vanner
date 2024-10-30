@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/fondo1">
+
+    <!-- Título -->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:background="@drawable/logoimg"
+        android:layout_gravity="center" />
+
+    <!-- Campo de Correo Electrónico -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico"
+        app:hintTextColor="#d0d3d4"
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFD700"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo de Contraseña -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        app:hintTextColor="#d0d3d4"
+        app:boxBackgroundMode="outline"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:textColor="#FFD700"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botón de Iniciar Sesión -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INICIAR SESIÓN"
+        android:layout_margin="16dp"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botón de Registrar Nuevo Usuario -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegisterEmpresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGISTRAR NUEVO USUARIO"
+        android:layout_margin="10dp"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

@@ -16,28 +16,29 @@
         android:background="@drawable/logoimg"
         android:layout_gravity="center" />
 
-        <!-- Campo Correo -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingrese su Correo"
-            android:textColorHint="#d0d3d4"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_correo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#FFD700" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEliminarAdmin"
+    <!-- Campo Correo -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Ingrese su Correo"
+        android:textColorHint="#d0d3d4"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFD700" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botones -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEliminarAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Eliminar"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:textColor="#000000"
         android:backgroundTint="#FFD700"
@@ -48,9 +49,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnVolver"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver"
+        android:layout_gravity="center"
         android:layout_margin="16dp"
         android:textColor="#000000"
         android:backgroundTint="#FFD700"
@@ -59,12 +61,37 @@
         android:layout_marginBottom="20dp"
         android:padding="12dp"/>
 
-    <TableLayout
-        android:id="@+id/tableUsuarios"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:stretchColumns="1">
-    </TableLayout>
+        android:text="Salir de Perfil"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="20dp"
+        android:padding="12dp"/>
+
+    <!-- Tabla con Scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <TableLayout
+            android:id="@+id/tbl_eliminar_administradores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#808080"
+            android:padding="12dp"
+            android:stretchColumns="1">
+
+        </TableLayout>
+
+    </ScrollView>
 
 </LinearLayout>
