@@ -1,0 +1,9 @@
+<ImageView android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:contentDescription="Imagen del empleo 1"
+    android:scaleType="centerCrop"
+    android:background="@android:color/transparent"
+    android:visibility="visible"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
