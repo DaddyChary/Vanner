@@ -1,6 +1,8 @@
 package activities;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
@@ -28,8 +30,8 @@ import models.User;
 public class VerUsuarios extends AppCompatActivity {
 
     private EditText editTextBuscar;
-    private Button buttonBuscar, buttonVolver;
-    private RecyclerView recyclerView;
+    private Button buttonVolver;
+    private TableLayout tblUser;
     private DatabaseReference databaseReference;
     private List<User> userList = new ArrayList<>();
 
@@ -40,19 +42,33 @@ public class VerUsuarios extends AppCompatActivity {
 
         // Inicializar componentes de la interfaz
         editTextBuscar = findViewById(R.id.editTextBuscar);
-        buttonBuscar = findViewById(R.id.buttonBuscar);
         buttonVolver = findViewById(R.id.buttonVolver);
-        recyclerView = findViewById(R.id.recyclerView);
+        tblUser = findViewById(R.id.tblUser);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
 
         // Cargar usuarios desde la base de datos
         cargarUsuarios();
 
-        // Configurar el botón de búsqueda
-        buttonBuscar.setOnClickListener(view -> {
-            String searchEmail = editTextBuscar.getText().toString();
-            filtrarUsuariosPorCorreo(searchEmail);
+        // Configurar la búsqueda reactiva
+        editTextBuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchEmail = s.toString();
+                if (searchEmail.isEmpty()) {
+                    mostrarUsuarios(userList);  // Muestra todos los usuarios si el campo está vacío
+                } else {
+                    filtrarUsuariosPorCorreo(searchEmail);  // Filtra usuarios en tiempo real
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         // Configurar el botón de volver
@@ -61,7 +77,7 @@ public class VerUsuarios extends AppCompatActivity {
 
     private void cargarUsuarios() {
         // Limpiar la tabla antes de cargar
-        recyclerView.removeAllViews();
+        tblUser.removeAllViews();
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,7 +89,7 @@ public class VerUsuarios extends AppCompatActivity {
                         userList.add(user);
                     }
                 }
-                mostrarUsuarios(userList);
+                mostrarUsuarios(userList);  // Mostrar todos los usuarios después de cargar
             }
 
             @Override
@@ -84,20 +100,19 @@ public class VerUsuarios extends AppCompatActivity {
     }
 
     private void mostrarUsuarios(List<User> usuarios) {
-        // Agregar fila de encabezado a la tabla
-        TableRow headerRow = new TableRow(this);
-        headerRow.addView(createTextView("Nombre"));
-        headerRow.addView(createTextView("Apellido"));
-        headerRow.addView(createTextView("Correo"));
-        recyclerView.addView(headerRow);
+        // Limpiar la tabla antes de mostrar los datos
+        tblUser.removeAllViews();
 
-        // Llenar filas con los datos de los usuarios
+        // Agregar fila de encabezado
+        TableRow headerRow = new TableRow(this);
+        headerRow.addView(createTextView("Correo"));
+        tblUser.addView(headerRow);
+
+        // Llenar filas solo con los correos de los usuarios
         for (User user : usuarios) {
             TableRow row = new TableRow(this);
-            row.addView(createTextView(user.getName()));
-            row.addView(createTextView(user.getLastName()));
             row.addView(createTextView(user.getMail()));
-            recyclerView.addView(row);
+            tblUser.addView(row);
         }
     }
 
@@ -115,7 +130,7 @@ public class VerUsuarios extends AppCompatActivity {
                 filteredList.add(user);
             }
         }
-        mostrarUsuarios(filteredList);
+        mostrarUsuarios(filteredList);  // Mostrar los usuarios filtrados
     }
 }
 
