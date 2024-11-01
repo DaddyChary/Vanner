@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -33,9 +34,8 @@ public class Perfilusuario extends AppCompatActivity {
 
     private Button btn_edit, btn_delete, btn_logout;
     private EditText et_nombre, et_apellido, et_Rut, et_calle, et_numeroCasa, et_comuna, et_region, et_telefono, et_email, Espelizacion;
-    private RadioButton rbEntrenadores, rbTecnicos, rbEmpresas;
     private DatabaseReference databaseReference;
-    private RadioGroup rgGrupoEntrenadores;
+    private ImageView profileImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,17 +43,14 @@ public class Perfilusuario extends AppCompatActivity {
         setContentView(R.layout.perfilusuario);
 
         // Initialize UI elements
-        rbEmpresas = findViewById(R.id.rbEmpresas);
-        rbEntrenadores = findViewById(R.id.rbEntrenadores);
-        rbTecnicos = findViewById(R.id.rbTecnicos);
-        rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores);
+        profileImage = findViewById(R.id.profileImage);
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);
         btn_logout = findViewById(R.id.btn_logout);
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
         et_Rut = findViewById(R.id.et_Rut);
-        et_calle = findViewById(R.id.et_calle); // Proper initialization of et_direccion
+        et_calle = findViewById(R.id.et_calle);
         et_numeroCasa = findViewById(R.id.et_numeroCasa);
         et_comuna = findViewById(R.id.et_comuna);
         et_region = findViewById(R.id.et_region);
@@ -101,15 +98,6 @@ public class Perfilusuario extends AppCompatActivity {
                         et_telefono.setText(usuario.getPhone());
                         et_email.setText(usuario.getMail());
                         Espelizacion.setText(usuario.getSpecialization());
-
-                        String tipoUsuario = usuario.getUserType();
-                        if (tipoUsuario.equals("entrenador")) {
-                            rbEntrenadores.setChecked(true);
-                        } else if (tipoUsuario.equals("técnico")) {
-                            rbTecnicos.setChecked(true);
-                        } else if (tipoUsuario.equals("empresa")) {
-                            rbEmpresas.setChecked(true);
-                        }
                     }
                 } else {
                     Toast.makeText(Perfilusuario.this, "No se encontraron datos del usuario", Toast.LENGTH_SHORT).show();
@@ -149,16 +137,6 @@ public class Perfilusuario extends AppCompatActivity {
             return;
         }
 
-        String tipoUsuario = "";
-        int radioId = rgGrupoEntrenadores.getCheckedRadioButtonId();
-        if (radioId == rbEntrenadores.getId()) {
-            tipoUsuario = "entrenador";
-        } else if (radioId == rbTecnicos.getId()) {
-            tipoUsuario = "técnico";
-        } else if (radioId == rbEmpresas.getId()) {
-            tipoUsuario = "empresa";
-        }
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userId = user.getUid();
@@ -175,7 +153,6 @@ public class Perfilusuario extends AppCompatActivity {
             actualizaciones.put("phone", telefono);
             actualizaciones.put("mail", correo);
             actualizaciones.put("specialization", specilization);
-            actualizaciones.put("userType", tipoUsuario);
 
             databaseReference.updateChildren(actualizaciones)
                     .addOnSuccessListener(aVoid -> Toast.makeText(Perfilusuario.this, "Perfil actualizado", Toast.LENGTH_SHORT).show())
