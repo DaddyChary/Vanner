@@ -215,50 +215,8 @@
                         android:textColor="#FFD700" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Entrenadores -->
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Entrenadores"
-                    android:textColor="#FFD700"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="16dp" />
+             
 
-                <!-- Grupo de RadioButtons -->
-                <RadioGroup
-                    android:id="@+id/rgGrupoEntrenadores"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rbEntrenadores"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Entrenadores"
-                        android:textColor="#d0d3d4"
-                        android:buttonTint="#FFD700" />
-
-                    <RadioButton
-                        android:id="@+id/rbTecnicos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Técnicos"
-                        android:textColor="#d0d3d4"
-                        android:buttonTint="#FFD700"
-                        android:layout_marginStart="16dp" />
-
-                    <RadioButton
-                        android:id="@+id/rbEmpresas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Empresas"
-                        android:textColor="#d0d3d4"
-                        android:buttonTint="#FFD700"
-                        android:layout_marginStart="16dp" />
-                </RadioGroup>
 
                 <!-- Espelizacion -->
                 <com.google.android.material.textview.MaterialTextView
