@@ -101,9 +101,9 @@
                 android:id="@+id/rbEntrenadores"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="#FFD700"
                 android:text="Entrenadores"
-                android:textColor="#d0d3d4"
-                android:buttonTint="#FFD700" />
+                android:textColor="#d0d3d4" />
 
             <RadioButton
                 android:id="@+id/rbTecnicos"

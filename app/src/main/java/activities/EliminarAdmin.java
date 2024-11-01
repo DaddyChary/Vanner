@@ -33,7 +33,6 @@ public class EliminarAdmin extends AppCompatActivity {
     private EditText et_correo;
     private DatabaseReference databaseReference;
     private TableLayout tbl_eliminar_administradores;
-    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +45,16 @@ public class EliminarAdmin extends AppCompatActivity {
         tbl_eliminar_administradores = findViewById(R.id.tbl_eliminar_administradores);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
-        auth = FirebaseAuth.getInstance();
 
         // Cargar correos en el TableLayout
         cargarCorreos();
 
-        btnEliminarAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String correo = et_correo.getText().toString().trim();
-                if (!correo.isEmpty()) {
-                    eliminarUsuarioPorCorreo(correo);
-                } else {
-                    Toast.makeText(EliminarAdmin.this, "Por favor, introduce un correo.", Toast.LENGTH_SHORT).show();
-                }
+        btnEliminarAdmin.setOnClickListener(view -> {
+            String correo = et_correo.getText().toString().trim();
+            if (!correo.isEmpty()) {
+                eliminarUsuarioPorCorreo(correo);
+            } else {
+                Toast.makeText(EliminarAdmin.this, "Por favor, introduce un correo.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,58 +96,28 @@ public class EliminarAdmin extends AppCompatActivity {
     }
 
     private void eliminarUsuarioPorCorreo(String correo) {
-        Log.d("EliminarAdmin", "Correo ingresado: " + correo);  // Verifica el correo ingresado
-
-        FirebaseFunctions.getInstance()
-                .getHttpsCallable("obtenerUidPorCorreo")
-                .call(Collections.singletonMap("email", correo))
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null && task.getResult().getData() != null) {
-                        String uid = (String) ((HashMap) task.getResult().getData()).get("uid");
-                        if (uid != null && !uid.isEmpty()) {
-                            Log.d("EliminarAdmin", "UID obtenido: " + uid);  // Verifica que el UID se ha obtenido correctamente
-                            eliminarUsuarioDeDB(uid);
-                        } else {
-                            Log.e("EliminarAdmin", "Error: UID no encontrado");
-                            Toast.makeText(EliminarAdmin.this, "Error: Usuario no encontrado", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Log.e("EliminarAdmin", "Error al obtener UID: " + (task.getException() != null ? task.getException().getMessage() : "No data"));
-                        Toast.makeText(EliminarAdmin.this, "Error: Usuario no encontrado", Toast.LENGTH_SHORT).show();
+        databaseReference.orderByChild("mail").equalTo(correo).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                        userSnapshot.getRef().removeValue()
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(EliminarAdmin.this, "Usuario eliminado de la base de datos.", Toast.LENGTH_SHORT).show();
+                                    et_correo.setText("");  // Limpiar el campo de correo
+                                    cargarCorreos();  // Recargar la tabla de correos
+                                })
+                                .addOnFailureListener(e -> Toast.makeText(EliminarAdmin.this, "Error al eliminar el usuario: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                     }
-                });
-    }
+                } else {
+                    Toast.makeText(EliminarAdmin.this, "Usuario no encontrado.", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-    private void eliminarUsuarioDeDB(String uid) {
-        Log.d("EliminarAdmin", "Intentando eliminar en DB UID: " + uid);  // Verifica el UID antes de eliminar en DB
-
-        databaseReference.child(uid).removeValue()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("EliminarAdmin", "Usuario eliminado de la base de datos con éxito.");
-                        Toast.makeText(EliminarAdmin.this, "Usuario eliminado de la base de datos.", Toast.LENGTH_SHORT).show();
-                        eliminarUsuarioDeAuth(uid);  // Intenta eliminar en Firebase Authentication
-                    } else {
-                        Log.e("EliminarAdmin", "Error al eliminar el usuario de la base de datos: " + task.getException().getMessage());
-                        Toast.makeText(EliminarAdmin.this, "Error al eliminar el usuario de la base de datos.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void eliminarUsuarioDeAuth(String uid) {
-        Log.d("EliminarAdmin", "Intentando eliminar en Auth UID: " + uid);  // Verifica el UID antes de eliminar en Auth
-
-        FirebaseFunctions.getInstance()
-                .getHttpsCallable("eliminarUsuario")
-                .call(Collections.singletonMap("uid", uid))
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("EliminarAdmin", "Usuario eliminado de autenticación con éxito.");
-                        Toast.makeText(EliminarAdmin.this, "Usuario eliminado de autenticación.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Log.e("EliminarAdmin", "Error al eliminar de autenticación: " + task.getException().getMessage());
-                        Toast.makeText(EliminarAdmin.this, "Error al eliminar de autenticación: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(EliminarAdmin.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

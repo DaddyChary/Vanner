@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,6 +31,8 @@ public class Registro extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private EditText emailRegister, passwordRegister, confirmPasswordRegister;
     private Button buttonRegister, backButtonRegister;
+    private RadioGroup rgGrupoEntrenadores;
+    private RadioButton rbEntrenadores, rbTecnicos, rbEmpresas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +48,10 @@ public class Registro extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         // Referencias a los elementos de la vista
+        rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores);
+        rbEntrenadores = findViewById(R.id.rbEntrenadores);
+        rbEmpresas = findViewById(R.id.rbEmpresas);
+        rbTecnicos = findViewById(R.id.rbTecnicos);
         emailRegister = findViewById(R.id.emailRegister);
         passwordRegister = findViewById(R.id.passwordRegister);
         confirmPasswordRegister = findViewById(R.id.confirmPasswordRegister);
@@ -63,13 +71,29 @@ public class Registro extends AppCompatActivity {
             String password = passwordRegister.getText().toString().trim();
             String confirmPassword = confirmPasswordRegister.getText().toString().trim();
 
+            // Obtener el tipo de usuario seleccionado
+            String tipoUsuario = obtenerTipoUsuario();
+
             // Llamar a la función guardarUsuario
-            guardarUsuario(email, password, confirmPassword);
+            guardarUsuario(email, password, confirmPassword, tipoUsuario);
         });
     }
 
+    // Función para obtener el tipo de usuario seleccionado
+    private String obtenerTipoUsuario() {
+        int selectedId = rgGrupoEntrenadores.getCheckedRadioButtonId();
+        if (selectedId == rbEntrenadores.getId()) {
+            return "Entrenador";
+        } else if (selectedId == rbTecnicos.getId()) {
+            return "Tecnico";
+        } else if (selectedId == rbEmpresas.getId()) {
+            return "Empresa";
+        }
+        return "General";  // Valor predeterminado si no se selecciona nada
+    }
+
     // Función para guardar el usuario
-    private void guardarUsuario(String email, String password, String confirmPassword) {
+    private void guardarUsuario(String email, String password, String confirmPassword, String tipoUsuario) {
 
         // Validar campos obligatorios
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
@@ -90,25 +114,25 @@ public class Registro extends AppCompatActivity {
         }
 
         // Registrar el usuario en Firebase Authentication
-        registerUser(email, password);
+        registerUser(email, password, tipoUsuario);
     }
 
     // Función para registrar el usuario en Firebase
-    private void registerUser(String email, String password) {
+    private void registerUser(String email, String password, String tipoUsuario) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         // Guardar información adicional en la base de datos
                         FirebaseUser user = mAuth.getCurrentUser();
-                        guardarDatosAdicionales(user, email);
+                        guardarDatosAdicionales(user, email, tipoUsuario);
                     } else {
                         Toast.makeText(Registro.this, "Error en el registro: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    // Guardar solo el correo y campos vacíos en la base de datos
-    private void guardarDatosAdicionales(FirebaseUser user, String email) {
+    // Guardar datos adicionales incluyendo el tipo de usuario en la base de datos
+    private void guardarDatosAdicionales(FirebaseUser user, String email, String tipoUsuario) {
         if (user == null) {
             Toast.makeText(Registro.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
             return;
@@ -117,8 +141,8 @@ public class Registro extends AppCompatActivity {
         // Obtener el ID del usuario
         String id = user.getUid();
 
-        // Guardar el objeto User en la base de datos solo con el correo y los demás campos vacíos
-        User usuario = new User("", "", "", "", "", "", "", email, "general", "N/A", "");
+        // Guardar el objeto User en la base de datos solo con el correo y el tipo de usuario
+        User usuario = new User("", "", "", "", "", "", "", email, tipoUsuario, "N/A", "");
 
         // Inicializar la referencia de la base de datos
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
@@ -138,9 +162,6 @@ public class Registro extends AppCompatActivity {
                 });
     }
 }
-
-
-
 
 
 
