@@ -13,15 +13,6 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <!-- Título -->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:gravity="center"
-            android:background="@drawable/logoimg"
-            android:layout_gravity="center" />
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -166,7 +157,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email@gmail.cl"
+                    android:hint="CorreoElectronico@gmail.cl"
                     android:textColorHint="#d0d3d4"
                     android:layout_marginBottom="8dp">
 
