@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etJobTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Título del Empleo" />
+
+    <EditText
+        android:id="@+id/etJobDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción del Empleo" />
+
+    <EditText
+        android:id="@+id/etJobSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sueldo" />
+
+    <EditText
+        android:id="@+id/etJobVacancies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vacantes" />
+
+    <EditText
+        android:id="@+id/etJobMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Modalidad" />
+
+    <EditText
+        android:id="@+id/etJobDeadline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Fecha límite (dd/MM/yyyy)" />
+
+    <EditText
+        android:id="@+id/etCompanyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de la Empresa" />
+
+    <EditText
+        android:id="@+id/etCompanyEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo Electrónico de la Empresa"
+        android:enabled="false" />
+
+
+</LinearLayout>

@@ -96,7 +96,7 @@ public class Login extends AppCompatActivity {
                                                     Toast.makeText(Login.this, "Bienvenido Admin", Toast.LENGTH_SHORT).show();
                                                     intent = new Intent(Login.this, MenuAdmin.class);
                                                     break;
-                                                case "empresa":
+                                                case "Empresa":
                                                     Toast.makeText(Login.this, "Bienvenido Empresa", Toast.LENGTH_SHORT).show();
                                                     intent = new Intent(Login.this, PerfilEmpresa.class);
                                                     break;
