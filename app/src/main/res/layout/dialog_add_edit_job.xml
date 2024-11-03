@@ -2,56 +2,90 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/fondo1">
 
     <EditText
         android:id="@+id/etJobTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Título del Empleo" />
+        android:hint="Título del Empleo"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/etJobDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción del Empleo" />
+        android:hint="Descripción del Empleo"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/etJobSalary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Sueldo" />
+        android:hint="Sueldo"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/etJobVacancies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Vacantes" />
+        android:hint="Vacantes"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/etJobMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Modalidad" />
+        android:hint="Modalidad"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/etJobDeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha límite (dd/MM/yyyy)" />
+        android:hint="Fecha límite (dd/MM/yyyy)"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/etCompanyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de la Empresa" />
+        android:hint="Nombre de la Empresa"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/etCompanyEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico de la Empresa"
-        android:enabled="false" />
+        android:enabled="false"
+        android:textColor="#FFD700"
+        android:textColorHint="#d0d3d4"
+        android:textSize="20sp"
+        android:textStyle="italic"/>
 
 
 </LinearLayout>

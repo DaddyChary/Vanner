@@ -32,7 +32,7 @@
                 android:id="@+id/emailLoginRecuperar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail@gmail.com"
+                android:hint="CorreoElectronico@gmail.com"
                 android:textColorHint="#d0d3d4"
                 android:textColor="#FFD700"
                 android:padding="12dp"

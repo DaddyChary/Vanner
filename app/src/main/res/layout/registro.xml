@@ -32,7 +32,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ejemplo:Email@ejemplo.com"
+            android:hint="CorreoElectronico@ejemplo.com"
             android:textColorHint="#d0d3d4"
             android:layout_marginBottom="8dp">
 
