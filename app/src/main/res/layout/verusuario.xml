@@ -7,48 +7,60 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Título -->
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@drawable/logoimg"
-        android:layout_gravity="center" />
-
-    <!-- Campo de búsqueda -->
-    <com.google.android.material.textfield.TextInputLayout
+    <!-- Contenedor para campo de búsqueda y botón Buscar -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColorHint="#d0d3d4">
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextBuscar"
+        <!-- Campo de búsqueda -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColorHint="#d0d3d4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar..."
+                android:padding="10dp"
+                android:textColor="#FFD700"
+                android:textSize="20sp"
+                android:textStyle="italic" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Botón de búsqueda -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonBuscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buscar"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:backgroundTint="#FFD700"
+            android:textColor="#000000"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- Tabla de datos -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+
+        <TableLayout
+            android:id="@+id/tblUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Buscar..."
-            android:padding="10dp"
-            android:textColor="#FFD700"
-            android:textSize="20sp"
-            android:textStyle="italic" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:stretchColumns="*" />
 
-    <!-- Botones de búsqueda y volver -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonBuscar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar"
-        android:textSize="20sp"
-        android:textStyle="italic"
-        android:backgroundTint="#FFD700"
-        android:textColor="#000000"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="end"/>
+    </ScrollView>
 
+    <!-- Botón Volver al final -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonVolver"
         android:layout_width="wrap_content"
@@ -61,20 +73,4 @@
         android:textSize="20sp"
         android:textStyle="italic"
         android:layout_gravity="center"/>
-
-    <!-- Tabla de datos -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TableLayout
-            android:id="@+id/tblUser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:layout_marginTop="16dp">
-
-        </TableLayout>
-    </ScrollView>
-
 </LinearLayout>

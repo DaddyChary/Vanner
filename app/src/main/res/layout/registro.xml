@@ -106,15 +106,6 @@
                 android:textColor="#d0d3d4" />
 
             <RadioButton
-                android:id="@+id/rbTecnicos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Técnicos"
-                android:textColor="#d0d3d4"
-                android:buttonTint="#FFD700"
-                android:layout_marginStart="16dp" />
-
-            <RadioButton
                 android:id="@+id/rbEmpresas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
