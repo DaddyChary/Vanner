@@ -33,6 +33,7 @@ public class EliminarAdmin extends AppCompatActivity {
     private EditText et_correo;
     private DatabaseReference databaseReference;
     private TableLayout tbl_eliminar_administradores;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,8 @@ public class EliminarAdmin extends AppCompatActivity {
         tbl_eliminar_administradores = findViewById(R.id.tbl_eliminar_administradores);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
+        auth = FirebaseAuth.getInstance();
 
-        // Cargar correos en el TableLayout
         cargarCorreos();
 
         btnEliminarAdmin.setOnClickListener(view -> {
@@ -62,7 +63,6 @@ public class EliminarAdmin extends AppCompatActivity {
     }
 
     private void cargarCorreos() {
-        // Limpiar la tabla antes de cargar los correos
         tbl_eliminar_administradores.removeAllViews();
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -89,7 +89,7 @@ public class EliminarAdmin extends AppCompatActivity {
 
         correoTextView.setText(correo);
         correoTextView.setPadding(16, 16, 16, 16);
-        correoTextView.setOnClickListener(view -> et_correo.setText(correo));  // Copiar correo al campo de búsqueda
+        correoTextView.setOnClickListener(view -> et_correo.setText(correo));
 
         row.addView(correoTextView);
         tbl_eliminar_administradores.addView(row);
@@ -104,8 +104,11 @@ public class EliminarAdmin extends AppCompatActivity {
                         userSnapshot.getRef().removeValue()
                                 .addOnSuccessListener(aVoid -> {
                                     Toast.makeText(EliminarAdmin.this, "Usuario eliminado de la base de datos.", Toast.LENGTH_SHORT).show();
-                                    et_correo.setText("");  // Limpiar el campo de correo
-                                    cargarCorreos();  // Recargar la tabla de correos
+                                    et_correo.setText("");
+                                    cargarCorreos();
+
+                                    // Llama a eliminarAuthPorCorreo después de eliminar en la base de datos
+                                    eliminarAuthPorCorreo(correo);
                                 })
                                 .addOnFailureListener(e -> Toast.makeText(EliminarAdmin.this, "Error al eliminar el usuario: " + e.getMessage(), Toast.LENGTH_SHORT).show());
                     }
@@ -120,4 +123,23 @@ public class EliminarAdmin extends AppCompatActivity {
             }
         });
     }
+
+
+
+    private void eliminarAuthPorCorreo(String correo) {
+        Log.d("EliminarAdmin", "Correo a eliminar: " + correo);
+
+        FirebaseFunctions.getInstance()
+                .getHttpsCallable("eliminarUsuarioPorCorreo")
+                .call(Collections.singletonMap("correo", correo))
+                .addOnSuccessListener(httpsCallableResult -> {
+                    Toast.makeText(EliminarAdmin.this, "Usuario eliminado de Firebase Auth.", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(EliminarAdmin.this, "Error al eliminar el usuario de Auth: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+
+
 }
