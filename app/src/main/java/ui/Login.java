@@ -31,9 +31,9 @@ import activities.OlvidarPass;
 
 public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private Button loginButtton,backButton;
+    private Button loginButton, backButton;
     private TextView forgotPasswordTextView;
-    private EditText emailLogin,passwordEditText;
+    private EditText emailLogin, passwordEditText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,39 +43,28 @@ public class Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         emailLogin = findViewById(R.id.emailLogin);
         passwordEditText = findViewById(R.id.passwordEditText);
-        loginButtton = findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.loginButton);
         backButton = findViewById(R.id.backButton);
         forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, MainActivity.class);
-                startActivity(intent);
-            }
+        backButton.setOnClickListener(view -> {
+            Intent intent = new Intent(Login.this, MainActivity.class);
+            startActivity(intent);
         });
 
-        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, OlvidarPass.class);
-                startActivity(intent);
-            }
+        forgotPasswordTextView.setOnClickListener(view -> {
+            Intent intent = new Intent(Login.this, OlvidarPass.class);
+            startActivity(intent);
         });
 
-        loginButtton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = emailLogin.getText().toString();
-                String password = passwordEditText.getText().toString();
-
-                singIn(email,password);
-            }
+        loginButton.setOnClickListener(view -> {
+            String email = emailLogin.getText().toString();
+            String password = passwordEditText.getText().toString();
+            signIn(email, password);
         });
-        }
+    }
 
-    private void singIn(String email, String password) {
-
+    private void signIn(String email, String password) {
         if (email.isEmpty() || !email.endsWith("@gmail.com")) {
             Toast.makeText(Login.this, "Por favor, ingrese un correo de Gmail válido", Toast.LENGTH_SHORT).show();
             return;
@@ -86,66 +75,63 @@ public class Login extends AppCompatActivity {
         }
 
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Autenticación exitosa
-                            Log.d("AUTH", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                // Obtener el UID del usuario
-                                String userId = user.getUid();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("AUTH", "signInWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            String userId = user.getUid();
+                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
 
-                                // Referencia a la base de datos para el usuario
-                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios").child(userId);
+                            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        String tipoUsuario = dataSnapshot.child("userType").getValue(String.class);
+                                        Intent intent;
 
-                                // Recuperar los datos del usuario
-                                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.exists()) {
-                                            // Obtener el tipo de usuario
-                                            String tipoUsuario = dataSnapshot.child("userType").getValue(String.class);
-                                            Intent intent;
-
-                                            if (tipoUsuario != null && tipoUsuario.equals("admin")) {
-                                                // Mensaje para admin
-                                                Toast.makeText(Login.this, "Bienvenido Admin", Toast.LENGTH_SHORT).show();
-                                                intent = new Intent(Login.this, MenuAdmin.class);
-                                            } else {
-                                                // Mensaje para cualquier otro tipo de usuario
-                                                Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
-                                                intent = new Intent(Login.this, Perfilusuario.class);
+                                        if (tipoUsuario != null) {
+                                            switch (tipoUsuario) {
+                                                case "admin":
+                                                    Toast.makeText(Login.this, "Bienvenido Admin", Toast.LENGTH_SHORT).show();
+                                                    intent = new Intent(Login.this, MenuAdmin.class);
+                                                    break;
+                                                case "empresa":
+                                                    Toast.makeText(Login.this, "Bienvenido Empresa", Toast.LENGTH_SHORT).show();
+                                                    intent = new Intent(Login.this, PerfilEmpresa.class);
+                                                    break;
+                                                default:
+                                                    Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
+                                                    intent = new Intent(Login.this, Perfilusuario.class);
+                                                    break;
                                             }
 
-                                            // Iniciar la actividad de perfil y pasar el UID del usuario
-                                            intent.putExtra("userId", userId); // Pasar UID del usuario
+                                            intent.putExtra("userId", userId);
                                             startActivity(intent);
-                                            finish(); // Finaliza la actividad actual después de iniciar la nueva
+                                            finish();
                                         } else {
                                             Toast.makeText(Login.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
                                         }
+                                    } else {
+                                        Toast.makeText(Login.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
                                     }
+                                }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                                        Log.e("DB_ERROR", "Error al obtener datos del usuario", databaseError.toException());
-                                    }
-                                });
-                            }
-                        } else {
-                            // Si la autenticación falla
-                            Log.w("AUTH", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login.this, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    Log.e("DB_ERROR", "Error al obtener datos del usuario", databaseError.toException());
+                                }
+                            });
                         }
+                    } else {
+                        Log.w("AUTH", "signInWithEmail:failure", task.getException());
+                        Toast.makeText(Login.this, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show();
+                        updateUI(null);
                     }
                 });
     }
 
-
-        private void updateUI(FirebaseUser user){
+    private void updateUI(FirebaseUser user) {
         if (user != null) {
             Intent intent = new Intent(Login.this, Perfilusuario.class);
             startActivity(intent);
@@ -153,6 +139,4 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this, "Inicio de sesión fallido. Por favor, inténtalo de nuevo.", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }
