@@ -31,10 +31,10 @@
                 android:gravity="center_vertical">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_edit"
+                    android:id="@+id/btn_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Editar"
+                    android:text="Regresar"
                     android:textColor="#000000"
                     app:backgroundTint="#FFD700" />
 
@@ -243,11 +243,11 @@
 
                 <!-- Botón Regresar -->
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_back"
+                    android:id="@+id/btn_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Regresar"
+                    android:text="Editar"
                     android:textColor="#000000"
                     android:backgroundTint="#FFD700"
                     android:textSize="20sp"

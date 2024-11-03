@@ -216,55 +216,48 @@
                     android:id="@+id/rgGrupoTipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:orientation="vertical">
 
-                    <GridLayout
+                    <RadioButton
+                        android:id="@+id/rb_administrador"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:columnCount="2"
-                        android:alignmentMode="alignMargins"
-                        android:rowOrderPreserved="false">
+                        android:text="Administrador"
+                        android:textColor="#d0d3d4"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_administrador"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Administrador"
-                            android:textColor="#d0d3d4"
-                            android:gravity="center"
-                            android:layout_marginEnd="8dp"/>
+                    <RadioButton
+                        android:id="@+id/rb_usuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Usuario"
+                        android:textColor="#d0d3d4"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_usuario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Usuario"
-                            android:textColor="#d0d3d4"
-                            android:gravity="center"
-                            android:layout_marginEnd="8dp"/>
+                    <RadioButton
+                        android:id="@+id/rb_empresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empresa"
+                        android:textColor="#d0d3d4"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_empresa"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Empresa"
-                            android:textColor="#d0d3d4"
-                            android:gravity="center"
-                            android:layout_marginEnd="8dp"/>
-
-                        <RadioButton
-                            android:id="@+id/rb_entrenador"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Entrenador"
-                            android:textColor="#d0d3d4"
-                            android:gravity="center"
-                            android:layout_marginEnd="8dp"/>
-                    </GridLayout>
+                    <RadioButton
+                        android:id="@+id/rb_entrenador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Entrenador"
+                        android:textColor="#d0d3d4"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp" />
                 </RadioGroup>
-
-
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_crear"
