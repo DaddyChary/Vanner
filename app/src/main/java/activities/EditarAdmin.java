@@ -31,8 +31,8 @@ import models.User;
 public class EditarAdmin extends AppCompatActivity {
 
     private EditText et_nombre, et_apellido, et_Rut, et_calle, et_numeroCasa, et_comuna, et_region, et_telefono, et_correo, et_correo_buscar;
-    private RadioGroup rg_tipo_usuario;
-    private RadioButton rb_administrador, rbTecnicos;
+    private RadioGroup rgGrupoTipo;
+    private RadioButton rb_administrador, rb_usuario, rb_entrenador, rb_empresa;
     private Button btn_editar, btn_volver, btnBuscar;
     private DatabaseReference databaseReference;
     private TableLayout tableUsuarios;
@@ -55,9 +55,11 @@ public class EditarAdmin extends AppCompatActivity {
         et_region = findViewById(R.id.et_region);
         et_telefono = findViewById(R.id.et_telefono);
         et_correo = findViewById(R.id.et_correo);
-        rg_tipo_usuario = findViewById(R.id.rg_tipo_usuario);
-        rbTecnicos = findViewById(R.id.rbTecnicos);
+        rgGrupoTipo = findViewById(R.id.rgGrupoTipo);
         rb_administrador = findViewById(R.id.rb_administrador);
+        rb_usuario = findViewById(R.id.rb_usuario);
+        rb_empresa = findViewById(R.id.rb_empresa);
+        rb_entrenador = findViewById(R.id.rb_entrenador);
         btn_editar = findViewById(R.id.btn_editar);
         btn_volver = findViewById(R.id.btn_volver);
         btnBuscar = findViewById(R.id.btnBuscar);
@@ -116,10 +118,15 @@ public class EditarAdmin extends AppCompatActivity {
         et_telefono.setText(usuario.getPhone());
         et_correo.setText(usuario.getMail());
 
-        if ("general".equals(usuario.getUserType())) {
-            rg_tipo_usuario.check(R.id.rb_usuario);
+        // Selección del tipo de usuario en el RadioGroup
+        if ("usuario".equals(usuario.getUserType())) {
+            rgGrupoTipo.check(R.id.rb_usuario);
         } else if ("tecnico".equals(usuario.getUserType())) {
-            rg_tipo_usuario.check(R.id.rbTecnicos);
+            rgGrupoTipo.check(R.id.rb_entrenador);
+        } else if ("empresa".equals(usuario.getUserType())) {
+            rgGrupoTipo.check(R.id.rb_empresa);
+        } else if ("administrador".equals(usuario.getUserType())) {
+            rgGrupoTipo.check(R.id.rb_administrador);
         }
     }
 
@@ -160,7 +167,18 @@ public class EditarAdmin extends AppCompatActivity {
             String region = et_region.getText().toString().trim();
             String telefono = et_telefono.getText().toString().trim();
             String correo = et_correo.getText().toString().trim();
-            String tipoUsuario = rg_tipo_usuario.getCheckedRadioButtonId() == R.id.rb_usuario ? "general" : "tecnico";
+
+            // Guarda el tipo de usuario seleccionado
+            String tipoUsuario;
+            if (rgGrupoTipo.getCheckedRadioButtonId() == R.id.rb_usuario) {
+                tipoUsuario = "usuario";
+            } else if (rgGrupoTipo.getCheckedRadioButtonId() == R.id.rb_entrenador) {
+                tipoUsuario = "tecnico";
+            } else if (rgGrupoTipo.getCheckedRadioButtonId() == R.id.rb_empresa) {
+                tipoUsuario = "empresa";
+            } else {
+                tipoUsuario = "administrador";
+            }
 
             Map<String, Object> usuarioUpdates = new HashMap<>();
             usuarioUpdates.put("name", nombre);

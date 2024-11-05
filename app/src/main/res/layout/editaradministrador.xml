@@ -268,7 +268,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="color/transparent"
+            android:background="@android:color/transparent"
             android:padding="12dp"
             android:layout_margin="22dp">
 
@@ -276,7 +276,7 @@
                 android:id="@+id/tableUsuarios"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="color/transparent"
+                android:background="@android:color/transparent"
                 android:padding="12dp"
                 android:stretchColumns="1">
 

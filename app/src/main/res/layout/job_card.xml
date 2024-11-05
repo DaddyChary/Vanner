@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Título del empleo -->
+    <TextView
+        android:id="@+id/tvJobTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título del Empleo"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+
+    <!-- Descripción del empleo -->
+    <TextView
+        android:id="@+id/tvJobDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción del empleo"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Sueldo -->
+    <TextView
+        android:id="@+id/tvJobSalary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sueldo: $0"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Vacantes -->
+    <TextView
+        android:id="@+id/tvJobVacancies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vacantes: 0"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Modalidad -->
+    <TextView
+        android:id="@+id/tvJobMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modalidad: Presencial"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Fecha límite -->
+    <TextView
+        android:id="@+id/tvJobDeadline"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha límite: 01/01/2023"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Botones de Editar y Eliminar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"/>
+    </LinearLayout>
+
+</LinearLayout>
