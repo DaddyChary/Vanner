@@ -92,27 +92,50 @@
 
         <!-- Grupo de RadioButtons -->
         <RadioGroup
-            android:id="@+id/rgGrupoEntrenadores"
+            android:id="@+id/rgGrupoTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/rbEntrenadores"
+                android:id="@+id/rb_administrador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#FFD700"
-                android:text="Entrenadores"
-                android:textColor="#d0d3d4" />
-
-            <RadioButton
-                android:id="@+id/rbEmpresas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Empresas"
+                android:text="Administrador"
                 android:textColor="#d0d3d4"
-                android:buttonTint="#FFD700"
-                android:layout_marginStart="16dp" />
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuario"
+                android:textColor="#d0d3d4"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb_empresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empresa"
+                android:textColor="#d0d3d4"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb_entrenador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrenador"
+                android:textColor="#d0d3d4"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp" />
         </RadioGroup>
     </LinearLayout>
 
