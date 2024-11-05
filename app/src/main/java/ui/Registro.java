@@ -30,8 +30,8 @@ public class Registro extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private EditText emailRegister, passwordRegister, confirmPasswordRegister;
     private Button buttonRegister, backButtonRegister;
-    private RadioGroup rgGrupoEntrenadores;
-    private RadioButton rbEntrenadores, rbEmpresas;
+    private RadioGroup rgGrupoTipo;
+    private RadioButton rbEntrenador, rbAdministrador, rbUsuario, rbEmpresa;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,9 +47,11 @@ public class Registro extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         // Referencias a los elementos de la vista
-        rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores);
-        rbEntrenadores = findViewById(R.id.rbEntrenadores);
-        rbEmpresas = findViewById(R.id.rbEmpresas);
+        rgGrupoTipo = findViewById(R.id.rgGrupoTipo);
+        rbEntrenador = findViewById(R.id.rb_entrenador);
+        rbAdministrador = findViewById(R.id.rb_administrador);
+        rbUsuario = findViewById(R.id.rb_usuario);
+        rbEmpresa = findViewById(R.id.rb_empresa);
         emailRegister = findViewById(R.id.emailRegister);
         passwordRegister = findViewById(R.id.passwordRegister);
         confirmPasswordRegister = findViewById(R.id.confirmPasswordRegister);
@@ -79,11 +81,15 @@ public class Registro extends AppCompatActivity {
 
     // Función para obtener el tipo de usuario seleccionado
     private String obtenerTipoUsuario() {
-        int selectedId = rgGrupoEntrenadores.getCheckedRadioButtonId();
-        if (selectedId == rbEntrenadores.getId()) {
-            return "Entrenador";
-        } else if (selectedId == rbEmpresas.getId()) {
+        int selectedId = rgGrupoTipo.getCheckedRadioButtonId();
+        if (selectedId == rbAdministrador.getId()) {
+            return "Administrador";
+        } else if (selectedId == rbUsuario.getId()) {
+            return "Usuario";
+        } else if (selectedId == rbEmpresa.getId()) {
             return "Empresa";
+        } else if (selectedId == rbEntrenador.getId()) {
+            return "Entrenador";
         }
         return "General";  // Valor predeterminado si no se selecciona nada
     }
