@@ -64,7 +64,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnLogout">
+        android:layout_below="@id/btnLogout"
+        android:background="#d0d3d4">
 
         <LinearLayout
             android:id="@+id/linearLayoutJobs"
