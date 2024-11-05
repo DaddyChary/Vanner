@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/fondo1">
-
-
+    android:background="@drawable/fondo1"
+    tools:context="ui.PerfilEmpresa">
 
     <!-- Imagen de la Empresa con forma circular -->
     <com.google.android.material.imageview.ShapeableImageView
@@ -68,93 +67,10 @@
         android:layout_below="@id/btnLogout">
 
         <LinearLayout
+            android:id="@+id/linearLayoutJobs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- Tarjeta de empleo individual -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/Jobcard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="#d0d3d4">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Título del Empleo"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Descripción breve del empleo" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobSalary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sueldo: $1000" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobVacancies"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Vacantes: 1" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobMode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Modalidad: Tiempo completo" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/jobDeadline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fecha límite: 30/10/2024"
-                        android:layout_marginBottom="8dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="end">
-
-                        <!-- Botón Editar -->
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_edit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Editar"
-                            android:textColor="#000000"
-                            app:backgroundTint="#FFD700" />
-
-                        <!-- Botón Eliminar -->
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_delete"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Eliminar"
-                            android:textColor="#000000"
-                            app:backgroundTint="#FFD700"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Puedes duplicar esta tarjeta para agregar más empleos -->
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

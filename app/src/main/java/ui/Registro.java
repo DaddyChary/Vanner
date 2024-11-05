@@ -21,7 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 import activities.MainActivity;
 import models.User;
 
@@ -32,7 +31,7 @@ public class Registro extends AppCompatActivity {
     private EditText emailRegister, passwordRegister, confirmPasswordRegister;
     private Button buttonRegister, backButtonRegister;
     private RadioGroup rgGrupoEntrenadores;
-    private RadioButton rbEntrenadores, rbTecnicos, rbEmpresas;
+    private RadioButton rbEntrenadores, rbEmpresas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +50,6 @@ public class Registro extends AppCompatActivity {
         rgGrupoEntrenadores = findViewById(R.id.rgGrupoEntrenadores);
         rbEntrenadores = findViewById(R.id.rbEntrenadores);
         rbEmpresas = findViewById(R.id.rbEmpresas);
-        rbTecnicos = findViewById(R.id.rbTecnicos);
         emailRegister = findViewById(R.id.emailRegister);
         passwordRegister = findViewById(R.id.passwordRegister);
         confirmPasswordRegister = findViewById(R.id.confirmPasswordRegister);
@@ -84,8 +82,6 @@ public class Registro extends AppCompatActivity {
         int selectedId = rgGrupoEntrenadores.getCheckedRadioButtonId();
         if (selectedId == rbEntrenadores.getId()) {
             return "Entrenador";
-        } else if (selectedId == rbTecnicos.getId()) {
-            return "Tecnico";
         } else if (selectedId == rbEmpresas.getId()) {
             return "Empresa";
         }
@@ -162,7 +158,3 @@ public class Registro extends AppCompatActivity {
                 });
     }
 }
-
-
-
-
