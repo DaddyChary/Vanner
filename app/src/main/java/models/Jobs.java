@@ -1,5 +1,7 @@
 package models;
 
+import com.google.firebase.database.PropertyName;
+
 public class Jobs {
     private String id;
     private String title;
@@ -11,10 +13,13 @@ public class Jobs {
     private String companyName;
     private String mail;
 
+    // Constructor vacío necesario para Firebase
     public Jobs() {
     }
 
-    public Jobs(String id, String title,String description,String salary,String vacancies,String mode,String deadline,String companyName,String mail) {
+    // Constructor completo
+    public Jobs(String id, String title, String description, String salary, String vacancies,
+                String mode, String deadline, String companyName, String mail) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -26,76 +31,95 @@ public class Jobs {
         this.mail = mail;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getVacancies() {
-        return vacancies;
-    }
-
-    public void setVacancies(String vacancies) {
-        this.vacancies = vacancies;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
-
-    public String getDeadline() {
-        return deadline;
-    }
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
+    // Getters y setters
+    @PropertyName("id")
     public String getId() {
         return id;
     }
 
+    @PropertyName("id")
     public void setId(String id) {
         this.id = id;
+    }
+
+    @PropertyName("title")
+    public String getTitle() {
+        return title;
+    }
+
+    @PropertyName("title")
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @PropertyName("description")
+    public String getDescription() {
+        return description;
+    }
+
+    @PropertyName("description")
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @PropertyName("salary")
+    public String getSalary() {
+        return salary;
+    }
+
+    @PropertyName("salary")
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    @PropertyName("vacancies")
+    public String getVacancies() {
+        return vacancies;
+    }
+
+    @PropertyName("vacancies")
+    public void setVacancies(String vacancies) {
+        this.vacancies = vacancies;
+    }
+
+    @PropertyName("mode")
+    public String getMode() {
+        return mode;
+    }
+
+    @PropertyName("mode")
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    @PropertyName("deadline")
+    public String getDeadline() {
+        return deadline;
+    }
+
+    @PropertyName("deadline")
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
+    }
+
+    @PropertyName("companyName")
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    @PropertyName("companyName")
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    @PropertyName("mail")
+    public String getMail() {
+        return mail;
+    }
+
+    @PropertyName("mail")
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override

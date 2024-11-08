@@ -1,7 +1,6 @@
 package activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -123,7 +122,7 @@ public class EditarAdmin extends AppCompatActivity {
             rgGrupoTipo.check(R.id.rb_usuario);
         } else if ("tecnico".equals(usuario.getUserType())) {
             rgGrupoTipo.check(R.id.rb_entrenador);
-        } else if ("empresa".equals(usuario.getUserType())) {
+        } else if ("Empresa".equals(usuario.getUserType())) {
             rgGrupoTipo.check(R.id.rb_empresa);
         } else if ("administrador".equals(usuario.getUserType())) {
             rgGrupoTipo.check(R.id.rb_administrador);
@@ -175,7 +174,7 @@ public class EditarAdmin extends AppCompatActivity {
             } else if (rgGrupoTipo.getCheckedRadioButtonId() == R.id.rb_entrenador) {
                 tipoUsuario = "tecnico";
             } else if (rgGrupoTipo.getCheckedRadioButtonId() == R.id.rb_empresa) {
-                tipoUsuario = "empresa";
+                tipoUsuario = "Empresa";
             } else {
                 tipoUsuario = "administrador";
             }
@@ -206,6 +205,6 @@ public class EditarAdmin extends AppCompatActivity {
     }
 
     private void volver() {
-        finish();
+        finish(); // Finaliza la actividad actual y vuelve a la anterior
     }
 }
