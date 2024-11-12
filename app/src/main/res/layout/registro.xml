@@ -98,16 +98,6 @@
             android:orientation="vertical">
 
             <RadioButton
-                android:id="@+id/rb_administrador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Administrador"
-                android:textColor="#d0d3d4"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp" />
-
-            <RadioButton
                 android:id="@+id/rb_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/fondo1">
+
+    <!-- Imagen de logo centrado en la parte superior -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/logoimg"
+        android:contentDescription="Logo" />
+
+    <!-- Título Administrador -->
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrenadores"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:background="#FFD700"
+        android:layout_marginTop="20dp" />
+
+    <!-- Botón Chat -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="24dp" />
+
+    <!-- Botón Perfil Entrenador -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditarPerfilEntrenador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Perfil Entrenador"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón Match -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="16dp" />
+
+    <!-- Botón Cerrar Sección -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCerrarseccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sección"
+        android:textColor="#000000"
+        android:backgroundTint="#FFD700"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="24dp" />
+</LinearLayout>
