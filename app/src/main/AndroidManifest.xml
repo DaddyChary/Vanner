@@ -24,6 +24,10 @@
         <activity android:name="ui.Perfilusuario"/>
         <activity android:name="activities.EliminarAdmin"/>
         <activity android:name="activities.VerUsuarios"/>
+        <activity android:name="activities.Menu_usuario"/>
+        <activity android:name="activities.Menu_entrenador"/>
+        <activity android:name="activities.Menu_Empresa"/>
+
         <activity android:name="ui.PerfilEmpresa"/>
         <activity
             android:name="activities.MainActivity"

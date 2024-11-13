@@ -14,9 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.socialab2.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import activities.MainActivity;
 import activities.MenuAdmin;
+import activities.Menu_Empresa;
+import activities.Menu_entrenador;
+import activities.Menu_usuario;
 import activities.OlvidarPass;
 
 public class Login extends AppCompatActivity {
@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists()) {
                                         String tipoUsuario = dataSnapshot.child("userType").getValue(String.class);
-                                        Intent intent;
+                                        Intent intent = null;
 
                                         if (tipoUsuario != null) {
                                             switch (tipoUsuario) {
@@ -98,17 +98,27 @@ public class Login extends AppCompatActivity {
                                                     break;
                                                 case "Empresa":
                                                     Toast.makeText(Login.this, "Bienvenido Empresa", Toast.LENGTH_SHORT).show();
-                                                    intent = new Intent(Login.this, PerfilEmpresa.class);
+                                                    intent = new Intent(Login.this, Menu_Empresa.class);
+                                                    break;
+                                                case "Usuario":
+                                                    Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
+                                                    intent = new Intent(Login.this, Menu_usuario.class);
+                                                    break;
+                                                case "Entrenador":
+                                                    Toast.makeText(Login.this, "Bienvenido Entrenador", Toast.LENGTH_SHORT).show();
+                                                    intent = new Intent(Login.this, Menu_entrenador.class);
                                                     break;
                                                 default:
                                                     Toast.makeText(Login.this, "Bienvenido Usuario", Toast.LENGTH_SHORT).show();
-                                                    intent = new Intent(Login.this, Perfilusuario.class);
+                                                    intent = new Intent(Login.this, Menu_usuario.class);
                                                     break;
                                             }
 
-                                            intent.putExtra("userId", userId);
-                                            startActivity(intent);
-                                            finish();
+                                            if (intent != null) {
+                                                intent.putExtra("userId", userId);
+                                                startActivity(intent);
+                                                finish();
+                                            }
                                         } else {
                                             Toast.makeText(Login.this, "Error al obtener los datos del usuario", Toast.LENGTH_SHORT).show();
                                         }
@@ -133,7 +143,7 @@ public class Login extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            Intent intent = new Intent(Login.this, Perfilusuario.class);
+            Intent intent = new Intent(Login.this, Menu_usuario.class);
             startActivity(intent);
         } else {
             Toast.makeText(Login.this, "Inicio de sesión fallido. Por favor, inténtalo de nuevo.", Toast.LENGTH_SHORT).show();
