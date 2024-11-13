@@ -71,9 +71,8 @@ public class Registro extends AppCompatActivity {
     // Obtener el tipo de usuario
     private String obtenerTipoUsuario() {
         int selectedId = rgGrupoTipo.getCheckedRadioButtonId();
-        if (selectedId == rbAdministrador.getId()) {
-            return "Administrador";
-        } else if (selectedId == rbUsuario.getId()) {
+
+        if (selectedId == rbUsuario.getId()) {
             return "Usuario";
         } else if (selectedId == rbEmpresa.getId()) {
             return "Empresa";
