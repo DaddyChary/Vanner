@@ -3,8 +3,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
+    android:textColor="#FFD700"
     android:layout_marginBottom="8dp"
-    android:background="#d0d3d4">
+    android:background="@drawable/fondo1">
 
     <!-- Título del empleo -->
     <TextView
@@ -14,7 +15,7 @@
         android:text="Título del Empleo"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Descripción del empleo -->
     <TextView
@@ -24,7 +25,7 @@
         android:text="Descripción del empleo"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Sueldo -->
     <TextView
@@ -34,7 +35,7 @@
         android:text="Sueldo: $0"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Vacantes -->
     <TextView
@@ -44,7 +45,7 @@
         android:text="Vacantes: 0"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Modalidad -->
     <TextView
@@ -54,7 +55,7 @@
         android:text="Modalidad: Presencial"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Fecha límite -->
     <TextView
@@ -65,7 +66,7 @@
         android:text="Fecha límite: 01/01/2023"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@android:color/black"/>
+        android:textColor="#FFD700"/>
 
     <!-- Botones de Editar y Eliminar -->
     <LinearLayout

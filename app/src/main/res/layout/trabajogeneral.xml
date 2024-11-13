@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Título del Empleo"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/btnRegresarTarjeta"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,15 +46,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Tarjeta de empleo 1 -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="8dp" />
-
-            <!-- Tarjeta de empleo 2 -->
+            <!-- Tarjeta de empleo -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="16dp"
-                    android:background="#d0d3d4">
+                    android:background="#D0D3D4">
 
                     <!-- Layout para texto -->
                     <LinearLayout
@@ -90,7 +83,7 @@
                             android:text="Descripción breve del empleo 2" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/Salario"
+                            android:id="@+id/salary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sueldo: $150000" />
@@ -102,13 +95,13 @@
                             android:text="Vacantes: 4" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/modalidad"
+                            android:id="@+id/jobModality"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Modalidad: Remoto" />
 
                         <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/fechalimite"
+                            android:id="@+id/jobDeadline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Fecha límite: 15/12/2024"
@@ -122,27 +115,26 @@
 
                             <!-- Botón Ver -->
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnVerUsuarios2"
+                                android:id="@+id/btnViewJobDetails"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Ver"
                                 android:textColor="#000000"
                                 app:backgroundTint="#FFD700"
-                                android:contentDescription="Ver detalles de empleo 2" />
+                                android:contentDescription="Ver detalles de empleo" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <!-- Imagen a la derecha -->
                     <ImageView
-                        android:id="@+id/jobImage2"
+                        android:id="@+id/jobImage"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginStart="8dp"
-                        android:contentDescription="Imagen del empleo 2"
+                        android:contentDescription="Imagen del empleo"
                         android:src="@drawable/sample_image" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

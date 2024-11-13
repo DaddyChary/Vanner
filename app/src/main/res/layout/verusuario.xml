@@ -50,13 +50,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        >
 
         <TableLayout
             android:id="@+id/tblUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*" />
+            android:stretchColumns="*"
+            android:textColor="#FFD700"/>
 
     </ScrollView>
 

@@ -88,7 +88,8 @@
             android:layout_height="wrap_content"
             android:background="#808080"
             android:padding="12dp"
-            android:stretchColumns="1">
+            android:stretchColumns="1"
+            android:textColor="#FFD700">
 
         </TableLayout>
 
