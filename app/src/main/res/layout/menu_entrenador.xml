@@ -17,6 +17,7 @@
 
     <!-- Título Administrador -->
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Entrenadores"

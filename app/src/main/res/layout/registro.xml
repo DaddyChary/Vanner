@@ -1,19 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/fondo1">
-
-    <!-- Título -->
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@drawable/logoimg"
-        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,136 +10,153 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Email Field -->
-        <TextView
+        <!-- Título -->
+        <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="#FFFF00"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/logoimg"
+            android:layout_gravity="center" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="CorreoElectronico@ejemplo.com"
-            android:textColorHint="#d0d3d4"
-            android:layout_marginBottom="8dp">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailRegister"
+            <!-- Email Field -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="#FFFF00"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#FFD700"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="CorreoElectronico@ejemplo.com"
+                android:textColorHint="#d0d3d4"
+                android:layout_marginBottom="8dp">
 
-        <!-- Password Field -->
-        <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFD700"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Password Field -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contraseña"
+                android:textColor="#FFFF00"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:textColorHint="#d0d3d4"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFD700"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Confirm Password Field -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmar Contraseña"
+                android:textColor="#FFFF00"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirmar Contraseña"
+                android:textColorHint="#d0d3d4"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/confirmPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="#FFD700" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Grupo de RadioButtons -->
+            <RadioGroup
+                android:id="@+id/rgGrupoTipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario"
+                    android:textColor="#d0d3d4"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_empresa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Empresa"
+                    android:textColor="#d0d3d4"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioButton
+                    android:id="@+id/rb_entrenador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Entrenador"
+                    android:textColor="#d0d3d4"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:layout_margin="10dp"
+            android:backgroundTint="#FFC107"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/backButtonRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
-            android:textColor="#FFFF00"
-            android:layout_marginBottom="4dp" />
+            android:text="Volver"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFC107"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:textColorHint="#d0d3d4"
-            android:layout_marginBottom="8dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#FFD700"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Confirm Password Field -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Confirmar Contraseña"
-            android:textColor="#FFFF00"
-            android:layout_marginBottom="4dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Confirmar Contraseña"
-            android:textColorHint="#d0d3d4"
-            android:layout_marginBottom="8dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/confirmPasswordRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="#FFD700" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Grupo de RadioButtons -->
-        <RadioGroup
-            android:id="@+id/rgGrupoTipo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioButton
-                android:id="@+id/rb_usuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Usuario"
-                android:textColor="#d0d3d4"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp" />
-
-            <RadioButton
-                android:id="@+id/rb_empresa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Empresa"
-                android:textColor="#d0d3d4"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp" />
-
-            <RadioButton
-                android:id="@+id/rb_entrenador"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Entrenador"
-                android:textColor="#d0d3d4"
-                android:gravity="center"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp" />
-        </RadioGroup>
     </LinearLayout>
-
-    <!-- Buttons -->
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        android:layout_margin="10dp"
-        android:backgroundTint="#FFC107"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
-    <Button
-        android:id="@+id/backButtonRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFC107"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="italic" />
-
-</LinearLayout>
+</ScrollView>
