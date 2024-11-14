@@ -24,11 +24,9 @@ public class Menu_Empresa extends AppCompatActivity {
 
         btnEditarPerfilEntrenador = findViewById(R.id.btnEditarPerfilEntrenador);
         btnMensaje = findViewById(R.id.btnMensaje);
-        btnVolver = findViewById(R.id.btnVolver);
         btnCerrarseccion = findViewById(R.id.btnCerrarseccion);
 
         btnEditarPerfilEntrenador.setOnClickListener(v -> abrirPerfilEntrenador());
-        btnVolver.setOnClickListener(v -> volverAInicio());
         btnCerrarseccion.setOnClickListener(v -> cerrarSeccion());
     }
 
@@ -43,10 +41,6 @@ public class Menu_Empresa extends AppCompatActivity {
         startActivity(intent);
     }*/
 
-    private void volverAInicio() {
-        Intent intent = new Intent(Menu_Empresa.this, MainActivity.class);
-        startActivity(intent);
-    }
 
     private void cerrarSeccion() {
         finish();
