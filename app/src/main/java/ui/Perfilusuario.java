@@ -28,11 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import activities.MainActivity;
+import activities.Menu_usuario;
 import models.User;
 
 public class Perfilusuario extends AppCompatActivity {
 
-    private Button btn_edit, btn_delete, btn_logout;
+    private Button btn_edit, btn_delete, btn_logout, btn_back;
     private EditText et_nombre, et_apellido, et_Rut, et_calle, et_numeroCasa, et_comuna, et_region, et_telefono, et_email, Espelizacion;
     private DatabaseReference databaseReference;
     private ImageView profileImage;
@@ -46,6 +48,7 @@ public class Perfilusuario extends AppCompatActivity {
         profileImage = findViewById(R.id.profileImage);
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);
+        btn_back = findViewById(R.id.btn_back);
         btn_logout = findViewById(R.id.btn_logout);
         et_nombre = findViewById(R.id.et_nombre);
         et_apellido = findViewById(R.id.et_apellido);
@@ -68,11 +71,17 @@ public class Perfilusuario extends AppCompatActivity {
 
         btn_edit.setOnClickListener(view -> actualizarPerfil());
         btn_delete.setOnClickListener(view -> eliminarPerfil());
+
         btn_logout.setOnClickListener(view -> {
-            Intent intent = new Intent(Perfilusuario.this, Login.class);
+            Intent intent = new Intent(Perfilusuario.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
+
+        btn_back.setOnClickListener(view -> {
+            finish();
+        });
+
     }
 
     private void cargarDatosUsuario(FirebaseUser user) {

@@ -72,8 +72,6 @@ public class Menu_usuario extends AppCompatActivity {
         // Aquí puedes agregar la lógica de Firebase Authentication para cerrar sesión
         // FirebaseAuth.getInstance().signOut();
         Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(Menu_usuario.this, MainActivity.class);
-        startActivity(intent);
         finish();
     }
 }

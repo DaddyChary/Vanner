@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.socialab2.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import ui.Perfilusuario;
 
 public class Menu_entrenador extends AppCompatActivity {
 
@@ -34,10 +39,20 @@ public class Menu_entrenador extends AppCompatActivity {
 
         btnEditarPerfilEntrenador.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(Menu_entrenador.this, "Abriendo Perfil Entrenador...", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    String userId = user.getUid();  // Obtener el ID del usuario autenticado
+                    Toast.makeText(Menu_entrenador.this, "Abriendo Perfil Entrenador...", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Menu_entrenador.this, Perfilusuario.class);
+                    intent.putExtra("userId", userId);  // Pasar el userId a la actividad Perfilusuario
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Menu_entrenador.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
 
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +65,8 @@ public class Menu_entrenador extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Menu_entrenador.this, "Sección Cerrada.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Menu_entrenador.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
