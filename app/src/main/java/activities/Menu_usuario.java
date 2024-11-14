@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.socialab2.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import ui.Perfilusuario;
 
@@ -35,8 +37,16 @@ public class Menu_usuario extends AppCompatActivity {
         btnPerfilUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_usuario.this, Perfilusuario.class);
-                startActivity(intent);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    String userId = user.getUid();  // Obtener el ID del usuario autenticado
+                    Toast.makeText(Menu_usuario.this, "Abriendo Perfil Entrenador...", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Menu_usuario.this, Perfilusuario.class);
+                    intent.putExtra("userId", userId);  // Pasar el userId a la actividad Perfilusuario
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Menu_usuario.this, "Usuario no autenticado", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
