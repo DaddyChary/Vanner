@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.socialab2.R;
 import com.google.android.material.button.MaterialButton;
 
+import kotlin.collections.IntIterator;
 import ui.Perfilusuario;
 
 public class Menu_usuario extends AppCompatActivity {
@@ -30,7 +31,6 @@ public class Menu_usuario extends AppCompatActivity {
         btnChatEntrenadores = findViewById(R.id.btnChatEntrenadores);
         btnMatch = findViewById(R.id.btnMatch);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
-
         // Configurar el botón Editar Perfil Usuario
         btnPerfilUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +46,12 @@ public class Menu_usuario extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Menu_usuario.this, Chats.class);
                 startActivity(intent);
+            }
+        });
+        btnMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu_usuario.this.)
             }
         });
 
