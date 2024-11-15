@@ -41,100 +41,13 @@
         app:layout_constraintTop_toBottomOf="@id/jobTitle1"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- Contenedor para las tarjetas de empleo -->
         <LinearLayout
+            android:id="@+id/jobListContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- Tarjeta de empleo -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardElevation="4dp"
-                app:cardCornerRadius="8dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="16dp"
-                    android:background="#D0D3D4">
-
-                    <!-- Layout para texto -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/jobTitle2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Título del Empleo 2"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/jobDescription2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Descripción breve del empleo 2" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/salary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sueldo: $150000" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/jobVacancies2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Vacantes: 4" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/jobModality"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Modalidad: Remoto" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/jobDeadline"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fecha límite: 15/12/2024"
-                            android:layout_marginBottom="8dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="end">
-
-                            <!-- Botón Ver -->
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnViewJobDetails"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Ver"
-                                android:textColor="#000000"
-                                app:backgroundTint="#FFD700"
-                                android:contentDescription="Ver detalles de empleo" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <!-- Imagen a la derecha -->
-                    <ImageView
-                        android:id="@+id/jobImage"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginStart="8dp"
-                        android:contentDescription="Imagen del empleo" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            <!-- Las tarjetas se agregarán aquí dinámicamente desde TrabajoGeneral.java -->
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

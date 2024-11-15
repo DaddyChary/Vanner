@@ -1,0 +1,86 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#d0d3d4">
+
+        <!-- Layout para texto -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/jobTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Título del Empleo"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/jobDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripción breve del empleo" />
+
+            <TextView
+                android:id="@+id/jobSalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sueldo: $0" />
+
+            <TextView
+                android:id="@+id/jobVacancies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vacantes: 0" />
+
+            <TextView
+                android:id="@+id/jobMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modalidad: Tiempo parcial" />
+
+            <TextView
+                android:id="@+id/jobDeadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha límite: 01/01/2023"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <!-- Botón Ver -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerUsuarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver"
+                    android:textColor="#000000"
+                    app:backgroundTint="#FFD700"
+                    android:contentDescription="Ver detalles de empleo" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Imagen a la derecha -->
+        <ImageView
+            android:id="@+id/jobImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Imagen del empleo"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

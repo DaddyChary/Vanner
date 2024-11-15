@@ -8,16 +8,17 @@
     android:background="@drawable/fondo1">
 
     <!-- Título del empleo -->
+
+    <!-- Descripción del empleo -->
     <TextView
         android:id="@+id/tvJobTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Título del Empleo"
+        android:textColor="#FFD700"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#FFD700"/>
+        android:textStyle="bold" />
 
-    <!-- Descripción del empleo -->
     <TextView
         android:id="@+id/tvJobDescription"
         android:layout_width="wrap_content"
