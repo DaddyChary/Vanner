@@ -50,7 +50,7 @@ public class TrabajoGeneral extends AppCompatActivity {
                     // Inflar el layout de la tarjeta desde job_card_match.xml
                     View jobCard = getLayoutInflater().inflate(R.layout.job_card_match, jobListContainer, false);
 
-// Asignar valores a los elementos de la tarjeta
+                    // Asignar valores a los elementos de la tarjeta
                     TextView jobTitle = jobCard.findViewById(R.id.jobTitle);
                     TextView jobDescription = jobCard.findViewById(R.id.jobDescription);
                     TextView jobSalary = jobCard.findViewById(R.id.jobSalary);
@@ -60,7 +60,7 @@ public class TrabajoGeneral extends AppCompatActivity {
                     MaterialButton btnVerUsuarios = jobCard.findViewById(R.id.btnVerUsuarios);
                     ImageView jobImage = jobCard.findViewById(R.id.jobImage);
 
-// Configuración de datos en los TextViews y otros elementos
+                    // Configuración de datos en los TextViews y otros elementos
                     jobTitle.setText("Ejemplo de Título");
                     jobDescription.setText("Descripción del trabajo");
                     jobSalary.setText("Sueldo: $2000");
@@ -68,10 +68,9 @@ public class TrabajoGeneral extends AppCompatActivity {
                     jobMode.setText("Modalidad: Remoto");
                     jobDeadline.setText("Fecha límite: 01/12/2024");
 
-// Configuración de la imagen (opcional)
-                    jobImage.setImageResource(R.drawable.sample_image);
+                    // Configuración de la imagen (opcional)
 
-// Agregar la tarjeta al contenedor
+                    // Agregar la tarjeta al contenedor
                     jobListContainer.addView(jobCard);
 
                 }
