@@ -61,7 +61,8 @@ public class Menu_usuario extends AppCompatActivity {
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_usuario.this.)
+                Intent intent = new Intent(Menu_usuario.this,TrabajoGeneral.class);
+                startActivity(intent);
             }
         });
 
