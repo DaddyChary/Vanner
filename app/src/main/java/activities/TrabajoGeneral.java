@@ -1,8 +1,6 @@
 package activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,44 +39,55 @@ public class TrabajoGeneral extends AppCompatActivity {
     private void loadJobsFromFirebase() {
         DatabaseReference jobsRef = FirebaseDatabase.getInstance().getReference().child("jobs");
 
-        // Listener para cargar los trabajos una sola vez desde Firebase
+        // Listener para cargar los trabajos desde Firebase
         jobsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot jobSnapshot : dataSnapshot.getChildren()) {
-                    // Crear una tarjeta para cada trabajo usando el layout job_card.xml
-                    // Inflar el layout de la tarjeta desde job_card_match.xml
-                    View jobCard = getLayoutInflater().inflate(R.layout.job_card_match, jobListContainer, false);
+                    // Obtener los datos del trabajo
+                    String companyName = jobSnapshot.child("companyName").getValue(String.class);
+                    String deadline = jobSnapshot.child("deadline").getValue(String.class);
+                    String description = jobSnapshot.child("description").getValue(String.class);
+                    String salary = jobSnapshot.child("salary").getValue(String.class);
+                    String title = jobSnapshot.child("title").getValue(String.class);
+                    String vacancies = jobSnapshot.child("vacancies").getValue(String.class);
+                    String mode = jobSnapshot.child("mode").getValue(String.class);
 
-                    // Asignar valores a los elementos de la tarjeta
-                    TextView jobTitle = jobCard.findViewById(R.id.jobTitle);
-                    TextView jobDescription = jobCard.findViewById(R.id.jobDescription);
-                    TextView jobSalary = jobCard.findViewById(R.id.jobSalary);
-                    TextView jobVacancies = jobCard.findViewById(R.id.jobVacancies);
-                    TextView jobMode = jobCard.findViewById(R.id.jobMode);
-                    TextView jobDeadline = jobCard.findViewById(R.id.jobDeadline);
-                    MaterialButton btnVerUsuarios = jobCard.findViewById(R.id.btnVerUsuarios);
-                    ImageView jobImage = jobCard.findViewById(R.id.jobImage);
+                    // Verificar que al menos un campo importante tenga contenido
+                    if ((title != null && !title.trim().isEmpty()) ||
+                            (description != null && !description.trim().isEmpty())) {
 
-                    // Configuración de datos en los TextViews y otros elementos
-                    jobTitle.setText("Ejemplo de Título");
-                    jobDescription.setText("Descripción del trabajo");
-                    jobSalary.setText("Sueldo: $2000");
-                    jobVacancies.setText("Vacantes: 3");
-                    jobMode.setText("Modalidad: Remoto");
-                    jobDeadline.setText("Fecha límite: 01/12/2024");
+                        // Inflar el layout de la tarjeta
+                        View jobCard = getLayoutInflater().inflate(R.layout.job_card_match, jobListContainer, false);
 
-                    // Configuración de la imagen (opcional)
+                        // Asignar datos a los elementos de la tarjeta
+                        TextView jobTitle = jobCard.findViewById(R.id.jobTitle);
+                        TextView jobDescription = jobCard.findViewById(R.id.jobDescription);
+                        TextView jobSalary = jobCard.findViewById(R.id.jobSalary);
+                        TextView jobVacancies = jobCard.findViewById(R.id.jobVacancies);
+                        TextView jobMode = jobCard.findViewById(R.id.jobMode);
+                        TextView jobDeadline = jobCard.findViewById(R.id.jobDeadline);
+                        MaterialButton btnVerUsuarios = jobCard.findViewById(R.id.btnVerUsuarios);
+                        ImageView jobImage = jobCard.findViewById(R.id.jobImage);
 
-                    // Agregar la tarjeta al contenedor
-                    jobListContainer.addView(jobCard);
+                        // Asignar valores a los elementos
+                        jobTitle.setText(title != null ? title : "Título no disponible");
+                        jobDescription.setText(description != null ? description : "Sin descripción");
+                        jobSalary.setText(salary != null ? "Sueldo: " + salary : "Sueldo no disponible");
+                        jobVacancies.setText(vacancies != null ? "Vacantes: " + vacancies : "Vacantes no disponibles");
+                        jobMode.setText(mode != null ? "Modalidad: " + mode : "Modalidad no especificada");
+                        jobDeadline.setText(deadline != null ? "Fecha límite: " + deadline : "Sin fecha límite");
 
+                        // Agregar la tarjeta al contenedor
+                        jobListContainer.addView(jobCard);
+                    }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Manejo de errores (puedes mostrar un mensaje o log en caso de fallo)
+                // Manejo de errores
+                // Puedes mostrar un mensaje de error o registrar el problema en el log
             }
         });
     }
