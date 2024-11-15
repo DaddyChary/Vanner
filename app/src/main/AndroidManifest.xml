@@ -29,6 +29,8 @@
         <activity android:name="activities.Menu_Empresa"/>
         <activity android:name="activities.TrabajoGeneral"/>
         <activity android:name="ui.PerfilEmpresa"/>
+        <activity android:name="activities.MarchUsuario"/>
+
         <activity
             android:name="activities.MainActivity"
             android:exported="true">

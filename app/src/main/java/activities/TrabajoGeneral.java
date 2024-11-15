@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -78,6 +79,19 @@ public class TrabajoGeneral extends AppCompatActivity {
                         jobMode.setText(mode != null ? "Modalidad: " + mode : "Modalidad no especificada");
                         jobDeadline.setText(deadline != null ? "Fecha límite: " + deadline : "Sin fecha límite");
 
+                        // Configuración del botón "Ver"
+                        btnVerUsuarios.setOnClickListener(view -> {
+                            // Pasar los datos al detalle del empleo
+                            Intent intent = new Intent(TrabajoGeneral.this, MarchUsuario.class);
+                            intent.putExtra("title", title);
+                            intent.putExtra("description", description);
+                            intent.putExtra("salary", salary);
+                            intent.putExtra("vacancies", vacancies);
+                            intent.putExtra("mode", mode);
+                            intent.putExtra("deadline", deadline);
+                            startActivity(intent);
+                        });
+
                         // Agregar la tarjeta al contenedor
                         jobListContainer.addView(jobCard);
                     }
@@ -87,8 +101,8 @@ public class TrabajoGeneral extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Manejo de errores
-                // Puedes mostrar un mensaje de error o registrar el problema en el log
             }
         });
     }
+
 }
