@@ -140,6 +140,18 @@
                     android:contentDescription="Aprobar"
                     android:layout_marginStart="8dp" />
             </LinearLayout>
+            <!-- Botón Volver al final -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonVolver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:backgroundTint="#FFD700"
+                android:text="Volver"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:layout_gravity="center"/>
         </LinearLayout>
     </ScrollView>
 
