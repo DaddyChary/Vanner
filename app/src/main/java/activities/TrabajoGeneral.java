@@ -26,7 +26,7 @@ public class TrabajoGeneral extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trabajogeneral); // Asegúrate de que el archivo XML se llame trabajogeneral.xml
+        setContentView(R.layout.trabajogeneral);
 
         // Inicialización de vistas
         btnRegresarTarjeta = findViewById(R.id.btnRegresarTarjeta);
@@ -40,17 +40,13 @@ public class TrabajoGeneral extends AppCompatActivity {
     }
 
     private void getUserType() {
-        // Obtener el ID del usuario actual
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // Referencia a la base de datos para obtener el tipo de usuario
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userType = dataSnapshot.child("userType").getValue(String.class);
-
-                // Cargar trabajos basados en el tipo de usuario
                 loadJobsFromFirebase();
             }
 
@@ -64,14 +60,13 @@ public class TrabajoGeneral extends AppCompatActivity {
     private void loadJobsFromFirebase() {
         DatabaseReference jobsRef = FirebaseDatabase.getInstance().getReference().child("jobs");
 
-        // Listener para cargar los trabajos desde Firebase
         jobsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                jobListContainer.removeAllViews(); // Limpiar las tarjetas existentes
+                jobListContainer.removeAllViews();
 
                 for (DataSnapshot jobSnapshot : dataSnapshot.getChildren()) {
-                    // Obtener los datos del trabajo
+                    String jobId = jobSnapshot.getKey(); // Obtener el ID del trabajo
                     String companyName = jobSnapshot.child("companyName").getValue(String.class);
                     String createdBy = jobSnapshot.child("createdBy").getValue(String.class);
                     String deadline = jobSnapshot.child("deadline").getValue(String.class);
@@ -81,20 +76,15 @@ public class TrabajoGeneral extends AppCompatActivity {
                     String vacancies = jobSnapshot.child("vacancies").getValue(String.class);
                     String mode = jobSnapshot.child("mode").getValue(String.class);
 
-                    // Filtrar trabajos según el tipo de usuario
                     if ("entrenador".equals(userType) && !"empresa".equals(createdBy)) {
-                        // Si el usuario es entrenador, solo mostrar trabajos de empresas
                         continue;
                     }
 
-                    // Verificar que al menos un campo importante tenga contenido
                     if ((title != null && !title.trim().isEmpty()) ||
                             (description != null && !description.trim().isEmpty())) {
 
-                        // Inflar el layout de la tarjeta
                         View jobCard = getLayoutInflater().inflate(R.layout.job_card_match, jobListContainer, false);
 
-                        // Asignar datos a los elementos de la tarjeta
                         TextView jobTitle = jobCard.findViewById(R.id.jobTitle);
                         TextView jobDescription = jobCard.findViewById(R.id.jobDescription);
                         TextView jobSalary = jobCard.findViewById(R.id.jobSalary);
@@ -102,9 +92,7 @@ public class TrabajoGeneral extends AppCompatActivity {
                         TextView jobMode = jobCard.findViewById(R.id.jobMode);
                         TextView jobDeadline = jobCard.findViewById(R.id.jobDeadline);
                         MaterialButton btnVerUsuarios = jobCard.findViewById(R.id.btnVerUsuarios);
-                        ImageView jobImage = jobCard.findViewById(R.id.jobImage);
 
-                        // Asignar valores a los elementos
                         jobTitle.setText(title != null ? title : "Título no disponible");
                         jobDescription.setText(description != null ? description : "Sin descripción");
                         jobSalary.setText(salary != null ? "Sueldo: " + salary : "Sueldo no disponible");
@@ -112,20 +100,12 @@ public class TrabajoGeneral extends AppCompatActivity {
                         jobMode.setText(mode != null ? "Modalidad: " + mode : "Modalidad no especificada");
                         jobDeadline.setText(deadline != null ? "Fecha límite: " + deadline : "Sin fecha límite");
 
-                        // Configuración del botón "Ver"
                         btnVerUsuarios.setOnClickListener(view -> {
-                            // Pasar los datos al detalle del empleo
                             Intent intent = new Intent(TrabajoGeneral.this, MarchUsuario.class);
-                            intent.putExtra("title", title);
-                            intent.putExtra("description", description);
-                            intent.putExtra("salary", salary);
-                            intent.putExtra("vacancies", vacancies);
-                            intent.putExtra("mode", mode);
-                            intent.putExtra("deadline", deadline);
+                            intent.putExtra("jobId", jobId); // Pasar el ID del trabajo a la siguiente actividad
                             startActivity(intent);
                         });
 
-                        // Agregar la tarjeta al contenedor
                         jobListContainer.addView(jobCard);
                     }
                 }
