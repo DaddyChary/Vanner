@@ -16,7 +16,7 @@ import ui.Perfilusuario;
 
 public class Menu_entrenador extends AppCompatActivity {
 
-    private MaterialButton btnChat, btnEditarPerfilEntrenador, btnMatch, btnCerrarseccion;
+    private MaterialButton btnChat, btnEditarPerfilEntrenador, btnMatch, btnCerrarseccion,buttonVolver;
     private MaterialTextView titleText;
 
     @Override
@@ -57,6 +57,8 @@ public class Menu_entrenador extends AppCompatActivity {
         btnMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Menu_entrenador.this,TrabajoGeneral.class);
+                startActivity(intent);
                 Toast.makeText(Menu_entrenador.this, "Buscando un Match...", Toast.LENGTH_SHORT).show();
             }
         });

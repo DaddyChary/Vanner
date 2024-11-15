@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.socialab2.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,7 @@ public class TrabajoGeneral extends AppCompatActivity {
 
     private MaterialButton btnRegresarTarjeta;
     private LinearLayout jobListContainer;
+    private String userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,30 @@ public class TrabajoGeneral extends AppCompatActivity {
         // Configuración del botón de regreso
         btnRegresarTarjeta.setOnClickListener(view -> finish());
 
-        // Cargar trabajos desde Firebase
-        loadJobsFromFirebase();
+        // Obtener el tipo de usuario y cargar trabajos
+        getUserType();
+    }
+
+    private void getUserType() {
+        // Obtener el ID del usuario actual
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Referencia a la base de datos para obtener el tipo de usuario
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userType = dataSnapshot.child("userType").getValue(String.class);
+
+                // Cargar trabajos basados en el tipo de usuario
+                loadJobsFromFirebase();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Manejo de errores
+            }
+        });
     }
 
     private void loadJobsFromFirebase() {
@@ -44,15 +68,24 @@ public class TrabajoGeneral extends AppCompatActivity {
         jobsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                jobListContainer.removeAllViews(); // Limpiar las tarjetas existentes
+
                 for (DataSnapshot jobSnapshot : dataSnapshot.getChildren()) {
                     // Obtener los datos del trabajo
                     String companyName = jobSnapshot.child("companyName").getValue(String.class);
+                    String createdBy = jobSnapshot.child("createdBy").getValue(String.class);
                     String deadline = jobSnapshot.child("deadline").getValue(String.class);
                     String description = jobSnapshot.child("description").getValue(String.class);
                     String salary = jobSnapshot.child("salary").getValue(String.class);
                     String title = jobSnapshot.child("title").getValue(String.class);
                     String vacancies = jobSnapshot.child("vacancies").getValue(String.class);
                     String mode = jobSnapshot.child("mode").getValue(String.class);
+
+                    // Filtrar trabajos según el tipo de usuario
+                    if ("entrenador".equals(userType) && !"empresa".equals(createdBy)) {
+                        // Si el usuario es entrenador, solo mostrar trabajos de empresas
+                        continue;
+                    }
 
                     // Verificar que al menos un campo importante tenga contenido
                     if ((title != null && !title.trim().isEmpty()) ||
@@ -104,5 +137,4 @@ public class TrabajoGeneral extends AppCompatActivity {
             }
         });
     }
-
 }
